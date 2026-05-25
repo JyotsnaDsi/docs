@@ -8,8 +8,8 @@ const config: ZudokuConfig = {
   site: {
     title: "Epicode Docs",
     logo: {
-      src: { light: "/epicode-logo-web.png", dark: "/logo-dark.svg" },
-      alt: "Zudoku",
+      src: { light: "/epicode-logo-web.png", dark: "/epicode-logo-web.png" },
+      alt: "Epicode Logo",
       width: "130px",
     },
     footer: {
@@ -49,8 +49,8 @@ const config: ZudokuConfig = {
       ],
       logo: {
         src: {
-          light: "/epicode-logo-web.png",
-          dark: "/epicode-logo-web.png"
+          light: "/epicode-docs/epicode-logo-web.png",
+          dark: "/epicode-docs/epicode-logo-web.png"
         },
         alt: "Company Logo",
         width: "120px" // optional width
@@ -90,6 +90,7 @@ Sales
             "/sandbox/iravoicesandbox",
             "/sandbox/sandboxbotcompose",
             "/sandbox/compliance",
+            "/sandbox/customerinfo",
           ],
         },
       ],
