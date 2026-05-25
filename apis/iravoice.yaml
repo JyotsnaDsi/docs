@@ -1,0 +1,1144 @@
+openapi: 3.0.1
+info:
+  title: IraVoice API
+  description: >
+
+    IraVoice is a bidirectional media server that brings together Dialer,
+    Recorder, and BotStream modules to enable seamless telephony services for
+    both legacy CX systems and modern conversational AI applications.
+
+
+    # IraVoice - Key Advantages
+
+
+    ## 1. High-Concurrency AI Orchestration
+
+
+    **Problem:** Low-level audio processing workloads (resampling, noise
+    suppression, VAD), whether DSP or ML-based, bottleneck AI orchestration
+    layers in Python/Node.js, constraining concurrency and scale.
+
+
+    **IraVoice Approach:**
+
+
+    * Offloads all audio processing to a high-performance C++ media layer
+
+    * Handles:
+
+      * Real-time resampling (Developers can independently configure audio sampling rates for both IraVoice → AI Orchestration, & AI Orchestration → IraVoice).
+      * Deep Learning based fast [noise suppression](https://huggingface.co/weya-ai/hush).
+      * Server-side VAD with `"speech"` / `"silence"` events sent over websocket.
+
+    **Result:**
+
+
+    * ~10x higher concurrency per instance of orchestrator.
+
+    * Up to 90% lower compute cost for orchestration layer.
+
+    * Cleaner orchestration code (no DSP handling)
+
+
+    ## 2. Unified Multi-Trunk Orchestration
+
+
+    **Problem:** Multi-vendor telephony = fragmented APIs, inconsistent
+    events/CDRs, manual failover.
+
+
+    **IraVoice Approach:**
+
+
+    * Single API across multiple SIP trunks and geographies.
+
+    * [Campaign Manager portal](https://analytics.epicode.in/campaign-manager/)
+    to configure campaigns with multiple trunks, routing rules, and DID range to
+    be used.
+
+    * Built-in:
+
+      * CPS-aware routing & queuing
+      * Capacity-based load distribution
+      * Automatic failover on trunk outages
+      * Horizontal scaling of dialer clusters
+
+    **Result:**
+
+
+    * High availability across providers
+
+    * Zero-touch failover
+
+    * One integration, multi-operator backend
+
+    * Reliable large-scale campaign execution
+
+
+    ## 3. Real-Time Telemetry
+
+
+    **Problem:**
+
+    Operational blind spots in voice systems make it difficult to diagnose
+    failures (e.g., WebSocket issues), quantify latency, or detect degraded bot
+    performance in real time—leading to delayed debugging and poor user
+    experience.
+
+
+    **IraVoice Approach:**
+
+
+    * Deep integration with IraWatch for live observability
+
+    * [Real-time dashboard](https://analytics.epicode.in/iravoice-dashboard/)
+    with a **30-second moving window** tracking:
+
+      * WebSocket connection failures with stage-level granularity (DNS, TCP, SSL, WSS)
+      * Average bot response delay (user silence → bot audio received)
+      * Bot error rate (responses exceeding 4 seconds)
+    * Correlates signaling, media, and orchestration-layer metrics in a single
+    view
+
+
+    **Result:**
+
+
+    * Immediate detection of latency spikes and failure patterns
+
+    * Faster root-cause analysis with protocol-level visibility
+
+    * Proactive performance monitoring for conversational AI systems
+
+    * Improved SLA adherence and end-user experience
+
+
+    ---
+  version: 1.0.0
+tags:
+  - name: makecall (Make outbound call)
+  - name: makecalldirect
+  - name: dropcall
+  - name: stopstream
+  - name: bridgecalls
+  - name: transfercall
+paths:
+  /api/makecall:
+    post:
+      summary: Make Call
+      deprecated: false
+      description: ''
+      operationId: make_call_api_makecall_post
+      tags:
+        - makecall (Make outbound call)
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MakeCall'
+        required: true
+      responses:
+        '200':
+          description: Call request accepted and scheduled successfully
+          content:
+            application/json:
+              schema: {}
+              example:
+                status_code: 0
+                status: OK
+                call_uuid: 123e4567-e89b-12d3-a456-426614174000
+                cluster: cluster1
+          headers: {}
+          x-apidog-ordering: 0
+        '400':
+          description: Bad request due to invalid token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Invalid token
+          headers: {}
+          x-apidog-ordering: 1
+        '403':
+          description: >-
+            Forbidden due to campaign not allowed in current hours or cluster
+            down
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 3
+                status: >-
+                  This campaign is not allowed outside of production hours
+                  0900-1900
+          headers: {}
+          x-apidog-ordering: 2
+        '404':
+          description: Not found due to unknown campaign or cluster
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Unknown campaign
+          headers: {}
+          x-apidog-ordering: 3
+        '409':
+          description: Conflict due to no trunks assigned to the campaign
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: No trunks assigned to this campaign
+          headers: {}
+          x-apidog-ordering: 4
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          headers: {}
+          x-apidog-ordering: 5
+        '500':
+          description: Internal server error with exception details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: 'ExceptionName : Exception message'
+          headers: {}
+          x-apidog-ordering: 6
+        '503':
+          description: >-
+            Service unavailable due to all clusters for the campaign being
+            unreachable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 2
+                status: All clusters for campaign are unreachable!
+          headers: {}
+          x-apidog-ordering: 7
+      security:
+        - HTTPBearer: []
+          x-apidog:
+            schemeGroups:
+              - id: 7qvofk-PS5ShUqO0RiXOl
+                schemeIds:
+                  - HTTPBearer
+            required: true
+            use:
+              id: 7qvofk-PS5ShUqO0RiXOl
+              configs:
+                HTTPBearer:
+                  authConfigs:
+                    x-apidog:
+                      token: '{{bearerToken}}'
+            scopes:
+              7qvofk-PS5ShUqO0RiXOl:
+                HTTPBearer: []
+      x-apidog-folder: makecall (Make outbound call)
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/1286753/apis/api-35510371-run
+  /api/makecalldirect:
+    post:
+      summary: Make Call Direct
+      deprecated: false
+      description: ''
+      operationId: make_call_direct_api_makecalldirect_post
+      tags:
+        - makecalldirect
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MakeCallDirect'
+        required: true
+      responses:
+        '200':
+          description: Call request accepted and scheduled successfully
+          content:
+            application/json:
+              schema: {}
+              example:
+                status_code: 0
+                status: OK
+                call_uuid: 123e4567-e89b-12d3-a456-426614174000
+                cluster: cluster1
+          headers: {}
+          x-apidog-ordering: 0
+        '400':
+          description: Bad request due to invalid token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Invalid token
+          headers: {}
+          x-apidog-ordering: 1
+        '403':
+          description: >-
+            Forbidden due to campaign not allowed in current hours or cluster
+            down
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 3
+                status: >-
+                  This campaign is not allowed outside of production hours
+                  0900-1900
+          headers: {}
+          x-apidog-ordering: 2
+        '404':
+          description: Not found due to unknown campaign or cluster
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Unknown campaign
+          headers: {}
+          x-apidog-ordering: 3
+        '409':
+          description: Conflict due to no trunks assigned to the campaign
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: No trunks assigned to this campaign
+          headers: {}
+          x-apidog-ordering: 4
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          headers: {}
+          x-apidog-ordering: 5
+        '500':
+          description: Internal server error with exception details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: 'ExceptionName : Exception message'
+          headers: {}
+          x-apidog-ordering: 6
+        '503':
+          description: >-
+            Service unavailable due to all clusters for the campaign being
+            unreachable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 2
+                status: All clusters for campaign are unreachable!
+          headers: {}
+          x-apidog-ordering: 7
+      security:
+        - HTTPBearer: []
+          x-apidog:
+            schemeGroups:
+              - id: eXOaRMm7aXNryYc863J5a
+                schemeIds:
+                  - HTTPBearer
+            required: true
+            use:
+              id: eXOaRMm7aXNryYc863J5a
+              configs:
+                HTTPBearer:
+                  authConfigs:
+                    x-apidog:
+                      token: '{{bearerToken}}'
+            scopes:
+              eXOaRMm7aXNryYc863J5a:
+                HTTPBearer: []
+      x-apidog-folder: makecalldirect
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/1286753/apis/api-35510372-run
+  /api/dropcall:
+    post:
+      summary: Drop Call
+      deprecated: false
+      description: ''
+      operationId: drop_call_api_dropcall_post
+      tags:
+        - dropcall
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DropCall'
+        required: true
+      responses:
+        '200':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema: {}
+              example:
+                status_code: 0
+                status: OK
+          headers: {}
+          x-apidog-ordering: 0
+        '400':
+          description: Bad request due to invalid token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Invalid token
+          headers: {}
+          x-apidog-ordering: 1
+        '404':
+          description: Not found due to unknown call_uuid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Unknown call_uuid
+          headers: {}
+          x-apidog-ordering: 2
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          headers: {}
+          x-apidog-ordering: 3
+        '500':
+          description: Internal server error with exception details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: 'ExceptionName : Exception message'
+          headers: {}
+          x-apidog-ordering: 4
+        '503':
+          description: Service unavailable due to clusters for the call being unreachable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 2
+                status: Cluster unreachable!
+          headers: {}
+          x-apidog-ordering: 5
+      security:
+        - HTTPBearer: []
+          x-apidog:
+            schemeGroups:
+              - id: rx_GZadmLlaS6HAMw5Te1
+                schemeIds:
+                  - HTTPBearer
+            required: true
+            use:
+              id: rx_GZadmLlaS6HAMw5Te1
+              configs:
+                HTTPBearer:
+                  authConfigs:
+                    x-apidog:
+                      token: '{{bearerToken}}'
+            scopes:
+              rx_GZadmLlaS6HAMw5Te1:
+                HTTPBearer: []
+      x-apidog-folder: dropcall
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/1286753/apis/api-35510373-run
+  /api/stopstream:
+    post:
+      summary: Stop Stream
+      deprecated: false
+      description: ''
+      operationId: stop_stream_api_stopstream_post
+      tags:
+        - stopstream
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StopStream'
+        required: true
+      responses:
+        '200':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema: {}
+              example:
+                status_code: 0
+                status: OK
+          headers: {}
+          x-apidog-ordering: 0
+        '400':
+          description: Bad request due to invalid token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Invalid token
+          headers: {}
+          x-apidog-ordering: 1
+        '404':
+          description: Not found due to unknown call_uuid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Unknown call_uuid
+          headers: {}
+          x-apidog-ordering: 2
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          headers: {}
+          x-apidog-ordering: 3
+        '500':
+          description: Internal server error with exception details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: 'ExceptionName : Exception message'
+          headers: {}
+          x-apidog-ordering: 4
+        '503':
+          description: Service unavailable due to clusters for the call being unreachable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 2
+                status: Cluster unreachable!
+          headers: {}
+          x-apidog-ordering: 5
+      security:
+        - HTTPBearer: []
+          x-apidog:
+            schemeGroups:
+              - id: aLTFDEW9mG4hERK3gLPpj
+                schemeIds:
+                  - HTTPBearer
+            required: true
+            use:
+              id: aLTFDEW9mG4hERK3gLPpj
+              configs:
+                HTTPBearer:
+                  authConfigs:
+                    x-apidog:
+                      token: '{{bearerToken}}'
+            scopes:
+              aLTFDEW9mG4hERK3gLPpj:
+                HTTPBearer: []
+      x-apidog-folder: stopstream
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/1286753/apis/api-35510374-run
+  /api/bridgecalls:
+    post:
+      summary: Bridge Calls
+      deprecated: false
+      description: ''
+      operationId: bridge_calls_api_bridgecalls_post
+      tags:
+        - bridgecalls
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BridgeCalls'
+        required: true
+      responses:
+        '200':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema: {}
+              example:
+                status_code: 0
+                status: OK
+          headers: {}
+          x-apidog-ordering: 0
+        '400':
+          description: Bad request due to invalid token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Invalid token
+          headers: {}
+          x-apidog-ordering: 1
+        '404':
+          description: Not found due to unknown call_uuid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Unknown call_uuid
+          headers: {}
+          x-apidog-ordering: 2
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          headers: {}
+          x-apidog-ordering: 3
+        '500':
+          description: Internal server error with exception details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: 'ExceptionName : Exception message'
+          headers: {}
+          x-apidog-ordering: 4
+        '503':
+          description: Service unavailable due to clusters for the call being unreachable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 2
+                status: Cluster unreachable!
+          headers: {}
+          x-apidog-ordering: 5
+      security:
+        - HTTPBearer: []
+          x-apidog:
+            schemeGroups:
+              - id: ROYMZKZ3QJ-cB4HVAkDhl
+                schemeIds:
+                  - HTTPBearer
+            required: true
+            use:
+              id: ROYMZKZ3QJ-cB4HVAkDhl
+              configs:
+                HTTPBearer:
+                  authConfigs:
+                    x-apidog:
+                      token: '{{bearerToken}}'
+            scopes:
+              ROYMZKZ3QJ-cB4HVAkDhl:
+                HTTPBearer: []
+      x-apidog-folder: bridgecalls
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/1286753/apis/api-35510375-run
+  /api/transfercall:
+    post:
+      summary: Transfer Call
+      deprecated: false
+      description: ''
+      operationId: transfer_call_api_transfercall_post
+      tags:
+        - transfercall
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferCall'
+        required: true
+      responses:
+        '200':
+          description: Request processed successfully
+          content:
+            application/json:
+              schema: {}
+              example:
+                status_code: 0
+                status: OK
+          headers: {}
+          x-apidog-ordering: 0
+        '400':
+          description: Bad request due to invalid token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Invalid token
+          headers: {}
+          x-apidog-ordering: 1
+        '404':
+          description: Not found due to unknown call_uuid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: Unknown call_uuid
+          headers: {}
+          x-apidog-ordering: 2
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          headers: {}
+          x-apidog-ordering: 3
+        '500':
+          description: Internal server error with exception details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 1
+                status: 'ExceptionName : Exception message'
+          headers: {}
+          x-apidog-ordering: 4
+        '503':
+          description: Service unavailable due to clusters for the call being unreachable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apidog-orders: []
+                x-apidog-ignore-properties: []
+              example:
+                status_code: 2
+                status: Cluster unreachable!
+          headers: {}
+          x-apidog-ordering: 5
+      security:
+        - HTTPBearer: []
+          x-apidog:
+            schemeGroups:
+              - id: '-Rc0MqR8XgwIUTqnDkriy'
+                schemeIds:
+                  - HTTPBearer
+            required: true
+            use:
+              id: '-Rc0MqR8XgwIUTqnDkriy'
+              configs:
+                HTTPBearer:
+                  authConfigs:
+                    x-apidog:
+                      token: '{{bearerToken}}'
+            scopes:
+              '-Rc0MqR8XgwIUTqnDkriy':
+                HTTPBearer: []
+      x-apidog-folder: transfercall
+      x-apidog-status: released
+      x-run-in-apidog: https://app.apidog.com/web/project/1286753/apis/api-35510376-run
+components:
+  schemas:
+    BridgeCalls:
+      properties:
+        first_uuid:
+          type: string
+          title: Unique identifier of the first call.
+        second_uuid:
+          type: string
+          title: Unique identifier of the second call.
+      type: object
+      required:
+        - first_uuid
+        - second_uuid
+      title: BridgeCalls
+      x-apidog-orders:
+        - first_uuid
+        - second_uuid
+      x-apidog-ignore-properties: []
+      x-apidog-folder: ''
+    DropCall:
+      properties:
+        call_uuid:
+          type: string
+          title: Call Uuid
+      type: object
+      required:
+        - call_uuid
+      title: DropCall
+      x-apidog-orders:
+        - call_uuid
+      x-apidog-ignore-properties: []
+      x-apidog-folder: ''
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+      x-apidog-orders:
+        - detail
+      x-apidog-ignore-properties: []
+      x-apidog-folder: ''
+    MakeCall:
+      properties:
+        campaign_name:
+          type: string
+          title: >-
+            The unique campaign name created either through API or through the
+            monitor portal.
+        from_number:
+          type: string
+          title: Caller ID Number.
+          default: ''
+        to_number:
+          type: string
+          title: Destination phone number.
+        call_params:
+          additionalProperties: true
+          type: object
+          title: >-
+            Any valid json object. If websocket_host, websocket_port, and
+            websocket_app are set, the media will be streamed to the websocket
+            server.
+          default:
+            disable_recording: false
+            stream_on_cpa_events:
+              - LV
+            drop_on_cpa_events:
+              - FX
+              - AM
+            stream_frame_size_ms: 200
+            bot_inactivity_limit: 0
+          x-apidog-orders: []
+          properties: {}
+          x-apidog-ignore-properties: []
+        channel_vars:
+          anyOf:
+            - additionalProperties: true
+              type: object
+              x-apidog-orders: []
+              properties: {}
+              x-apidog-ignore-properties: []
+            - type: 'null'
+          title: >-
+            List of channel variables including SIP headers. Variables with
+            prefix sip_h_X- will set the SIP headers
+          default: {}
+        cpa_config:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: >-
+            If call progress analysis is required to detect answering machines,
+            specify the previously configured cpa config name
+          default: ''
+        dial_timeout:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Timeout for the dialing
+          default: 30
+      type: object
+      required:
+        - campaign_name
+        - to_number
+      title: MakeCall
+      x-apidog-orders:
+        - campaign_name
+        - from_number
+        - to_number
+        - call_params
+        - channel_vars
+        - cpa_config
+        - dial_timeout
+      x-apidog-ignore-properties: []
+      x-apidog-folder: ''
+    MakeCallDirect:
+      properties:
+        cluster:
+          type: string
+          title: Unique ID of the IraVoice cluster
+        campaign_name:
+          type: string
+          title: >-
+            The unique campaign name created either through API or through the
+            monitor portal.
+        from_number:
+          type: string
+          title: Caller ID Number.
+          default: ''
+        to_number:
+          type: string
+          title: Destination phone number.
+        call_params:
+          additionalProperties: true
+          type: object
+          title: >-
+            Any valid json object. If websocket_host, websocket_port, and
+            websocket_app are set, the media will be streamed to the websocket
+            server.
+          default:
+            disable_recording: false
+            stream_on_cpa_events:
+              - LV
+            drop_on_cpa_events:
+              - FX
+              - AM
+            stream_frame_size_ms: 200
+            bot_inactivity_limit: 0
+          x-apidog-orders: []
+          properties: {}
+          x-apidog-ignore-properties: []
+        channel_vars:
+          anyOf:
+            - additionalProperties: true
+              type: object
+              x-apidog-orders: []
+              properties: {}
+              x-apidog-ignore-properties: []
+            - type: 'null'
+          title: >-
+            List of channel variables including SIP headers. Variables with
+            prefix sip_h_X- will set the SIP headers
+          default: {}
+        cpa_config:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: >-
+            If call progress analysis is required to detect answering machines,
+            specify the previously configured cpa config name
+          default: ''
+        dial_timeout:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Timeout for the dialing
+          default: 30
+      type: object
+      required:
+        - cluster
+        - campaign_name
+        - to_number
+      title: MakeCallDirect
+      x-apidog-orders:
+        - cluster
+        - campaign_name
+        - from_number
+        - to_number
+        - call_params
+        - channel_vars
+        - cpa_config
+        - dial_timeout
+      x-apidog-ignore-properties: []
+      x-apidog-folder: ''
+    StopStream:
+      properties:
+        call_uuid:
+          type: string
+          title: Call Uuid
+      type: object
+      required:
+        - call_uuid
+      title: StopStream
+      x-apidog-orders:
+        - call_uuid
+      x-apidog-ignore-properties: []
+      x-apidog-folder: ''
+    TransferCall:
+      properties:
+        call_uuid:
+          type: string
+          title: Call Uuid
+        destination:
+          type: string
+          title: Destination
+        deflect:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Deflect
+          default: false
+      type: object
+      required:
+        - call_uuid
+        - destination
+      title: TransferCall
+      x-apidog-orders:
+        - call_uuid
+        - destination
+        - deflect
+      x-apidog-ignore-properties: []
+      x-apidog-folder: ''
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+          x-apidog-orders: []
+          properties: {}
+          x-apidog-ignore-properties: []
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+      x-apidog-orders:
+        - loc
+        - msg
+        - type
+        - input
+        - ctx
+      x-apidog-ignore-properties: []
+      x-apidog-folder: ''
+  responses: {}
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+servers: []
+security: []
