@@ -3,22 +3,5 @@
   "framework": {
     "version": "0.77.0"
   },
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/introduction",
-      "status": 301,
-      "headers": {
-        "Location": "/introduction"
-      }
-    },
-    {
-      "src": "/",
-      "dest": "/introduction",
-      "status": 301,
-      "headers": {
-        "Location": "/introduction"
-      }
-    }
-  ]
+  "routes": []
 }

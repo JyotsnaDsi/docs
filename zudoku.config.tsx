@@ -1,10 +1,12 @@
 import type { ZudokuConfig } from "zudoku";
 
 const config: ZudokuConfig = {
+  basePath: "/epicode-docs/",
   theme: {
     registryUrl: "https://tweakcn.com/r/themes/cmpb3ai70000d04l50okk9scp",
   },
   site: {
+    title: "Epicode Docs",
     logo: {
       src: { light: "/epicode-logo-web.png", dark: "/logo-dark.svg" },
       alt: "Zudoku",
@@ -114,3 +116,4 @@ Sales
 
 
 export default config;
+
