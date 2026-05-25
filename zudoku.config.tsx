@@ -3,8 +3,51 @@ import type { ZudokuConfig } from "zudoku";
 const config: ZudokuConfig = {
   basePath: "/epicode-docs",
   theme: {
-    registryUrl: "https://tweakcn.com/r/themes/cmpb3ai70000d04l50okk9scp",
-  },
+    "light": {
+      "background": "oklch(100% 0 none)",
+      "foreground": "oklch(14.5% 0 none)",
+      "card": "oklch(100% 0 none)",
+      "cardForeground": "oklch(14.5% 0 none)",
+      "popover": "oklch(100% 0 none)",
+      "popoverForeground": "oklch(14.5% 0 none)",
+      "primary": "oklch(57.7% 0.215 27.3)",
+      "primaryForeground": "oklch(97.1% 0.013 17.4)",
+      "secondary": "oklch(97% 0 none)",
+      "secondaryForeground": "oklch(20.4% 0 none)",
+      "muted": "oklch(97% 0 none)",
+      "mutedForeground": "oklch(55.6% 0 none)",
+      "accent": "oklch(97% 0 none)",
+      "accentForeground": "oklch(20.4% 0 none)",
+      "destructive": "oklch(63.7% 0.208 25.3)",
+      "destructiveForeground": "oklch(98.5% 0 none)",
+      "border": "oklch(92.2% 0 none)",
+      "input": "oklch(92.2% 0 none)",
+      "ring": "oklch(57.7% 0.215 27.3)",
+      "radius": "0.3rem"
+    },
+    "dark": {
+      "background": "oklch(14.5% 0 none)",
+      "foreground": "oklch(98.5% 0 none)",
+      "card": "oklch(14.5% 0 none)",
+      "cardForeground": "oklch(98.5% 0 none)",
+      "popover": "oklch(14.5% 0 none)",
+      "popoverForeground": "oklch(98.5% 0 none)",
+      "primary": "oklch(57.7% 0.215 27.3)",
+      "primaryForeground": "oklch(97.1% 0.013 17.4)",
+      "secondary": "oklch(26.9% 0 none)",
+      "secondaryForeground": "oklch(98.5% 0 none)",
+      "muted": "oklch(26.9% 0 none)",
+      "mutedForeground": "oklch(71.5% 0 none)",
+      "accent": "oklch(26.9% 0 none)",
+      "accentForeground": "oklch(98.5% 0 none)",
+      "destructive": "oklch(39.6% 0.133 25.7)",
+      "destructiveForeground": "oklch(98.5% 0 none)",
+      "border": "oklch(26.9% 0 none)",
+      "input": "oklch(26.9% 0 none)",
+      "ring": "oklch(57.7% 0.215 27.3)",
+      "radius": "0.3rem"
+    }
+},
   site: {
     title: "Epicode Docs",
     logo: {
