@@ -1,8 +1,0 @@
-import{t as e}from"./jsx-runtime-BFqoZbY3.js";import{n as t}from"./lib-Fyu0Mufw.js";var n=e(),r=`Thanks for choosing to use Zudoku to power your API documentation!`,i=[{depth:2,text:`Edit this page`,id:`edit-this-page`},{depth:2,text:`Configuration`,id:`configuration`}],a={title:`Welcome to Zudoku`,lastModifiedTime:`2026-05-25T06:22:18.000Z`},o=`pages/introduction.mdx`;function s(e){let r={a:`a`,code:`code`,h2:`h2`,p:`p`,...t(),...e.components};return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(r.p,{children:`Thanks for choosing to use Zudoku to power your API documentation!`}),`
-`,(0,n.jsx)(r.h2,{id:`edit-this-page`,children:`Edit this page`}),`
-`,(0,n.jsxs)(r.p,{children:[`To edit this page, open the `,(0,n.jsx)(r.code,{inline:`true`,children:`pages/introduction.mdx`}),` file.`]}),`
-`,(0,n.jsx)(r.h2,{id:`configuration`,children:`Configuration`}),`
-`,(0,n.jsxs)(r.p,{children:[`You can find the full configuration for your Zudoku site in the `,(0,n.jsx)(r.code,{inline:`true`,children:`zudoku.config.tsx`}),` file.`]}),`
-`,(0,n.jsxs)(r.p,{children:[`For further information on how to customize your site, check out the
-`,(0,n.jsx)(r.a,{href:`https://zudoku.dev/docs`,children:`Zudoku documentation`}),`.`]})]})}function c(e={}){let{wrapper:r}={...t(),...e.components};return r?(0,n.jsx)(r,{...e,children:(0,n.jsx)(s,{...e})}):s(e)}export{o as __filepath,c as default,r as excerpt,a as frontmatter,i as tableOfContents};
-//# sourceMappingURL=introduction-s3h2tZ41.js.map

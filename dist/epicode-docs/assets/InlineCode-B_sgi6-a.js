@@ -1,2 +1,0 @@
-import{t as e}from"./jsx-runtime-BFqoZbY3.js";import{t}from"./cn-BJDa8d5K.js";var n=e(),r=({className:e,...r})=>(0,n.jsx)(`code`,{className:t(`font-mono border p-1 py-0.5 rounded-sm bg-border/50 dark:bg-border/70 wrap-anywhere`,e),...r});export{r as t};
-//# sourceMappingURL=InlineCode-B_sgi6-a.js.map

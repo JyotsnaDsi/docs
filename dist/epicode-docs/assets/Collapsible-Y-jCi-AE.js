@@ -1,2 +1,0 @@
-import{t as e}from"./jsx-runtime-BFqoZbY3.js";import{i as t,o as n,r}from"./Textarea-BZsWMNsx.js";var i=e();function a({...e}){return(0,i.jsx)(n,{"data-slot":`collapsible`,...e})}function o({...e}){return(0,i.jsx)(t,{"data-slot":`collapsible-trigger`,...e})}function s({...e}){return(0,i.jsx)(r,{"data-slot":`collapsible-content`,...e})}export{s as n,o as r,a as t};
-//# sourceMappingURL=Collapsible-Y-jCi-AE.js.map
