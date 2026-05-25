@@ -127,7 +127,182 @@ paths:
     post:
       summary: Make Call
       deprecated: false
-      description: ''
+      description: >-
+        Picks a IraVoice cluster based on the ratio of capacity assigned and
+        queues the call in the _IraCallScheduler_ in that cluster.
+
+        If the request is successful, response json will contain the
+        _call\_uuid_ and _cluster_ name the call was placed in.
+
+
+        In the JSON payload, `call_params` can be used to control streaming,
+        event webhook, inactivity behavior etc as explained below.
+
+
+        ##  Call Params
+
+        Example:
+
+        ```
+
+        {
+            "stream_on_cpa_events": ["LV"],
+            "drop_on_cpa_events": ["AM", "FX"],
+
+            "websocket_host": "bot.example.com",
+            "websocket_port": 8443,
+            "websocket_app": "voicebot",
+
+            "streaming_useraudio": true,
+            "stream_frame_size_ms": 200,
+
+            "stt_sampling_rate": 16000,
+            "tts_sampling_rate": 16000,
+
+            "bot_inactivity_limit": 30,
+
+            "event_url": "https://events.example.com/calls",
+
+            "disable_recording": false
+        }
+
+        ```
+
+        ### Call Progress Analysis (CPA)
+
+
+        Only applicable for outbound calls where the makecall payload has the
+        `cpa_config` parameter set.
+
+
+        IraCPA will analyze the first 1.75 seconds of call audio and identify if
+        the call is answered by a Human(LV) / Answering machine(AM) / Fax
+        machine(FX). It can also detect silence(SL) and beeps(BP).
+
+        Automatic actions will be taken based on the configured
+        `stream_on_cpa_events` and `drop_on_cpa_events` parameters.
+
+
+        To know more about IraCPA, follow [link](https://epicode.in/iracpa/).
+
+
+        | Parameter | Type | Description |
+
+        | --- | --- | --- |
+
+        | `stream_on_cpa_events` | array | Streams call media to the configured
+        WebSocket endpoint when CPA event matches any value. <br>Default:
+        `["LV"]`. |
+
+        | `drop_on_cpa_events` | array | Terminates the call when CPA event
+        matches any value. <br>Default: `["FX","AM"]`. |
+
+
+        ### WebSocket Streaming
+
+
+        Connects to websocket server specified. Streams audio from the call to
+        the WebSocket server and plays audio received from the WebSocket server
+        into the call. The WebSocket message model is explained in detail in the
+        **[WebSocket Message
+        Model](https://ld.epicode.in/documentation#tag/WebSocket-Message-Model)**
+        section below.
+
+
+        | Parameter | Type | Description |
+
+        | --- | --- | --- |
+
+        | `websocket_host` | string | Hostname of the WebSocket server to which
+        IraVoice will stream call media.<br>**Requires `websocket_port` and
+        `websocket_app`.** |
+
+        | `websocket_port` | integer | Port of the WebSocket server.<br>**Used
+        only if `websocket_host` is set.** |
+
+        | `websocket_app` | string | Path name used to construct the WebSocket
+        endpoint.<br>**Used with `websocket_host` and `websocket_port`.** |
+
+        | `stream_frame_size_ms` | integer | Audio chunk duration in
+        milliseconds.<br>Default: 200ms. Minimum: 20ms.<br>**Chunking is
+        time-based (not packet-based).** |
+
+        | `stt_sampling_rate` | integer | Sampling rate (Hz) for audio sent
+        **from IraVoice → AI Orchestration**.<br>Range: 8000-48000. |
+
+        | `tts_sampling_rate` | integer | Sampling rate (Hz) for audio sent
+        **from AI Orchestration → IraVoice**.<br>Range: 8000-48000. |
+
+
+        ### Bot Inactivity
+
+
+        Drops the call if no audio is received from the WebSocket server for a
+        continuous duration specified in `bot_inactivity_limit` parameter.
+
+
+        Disabled if `bot_inactivity_limit` is not set or set to 0.
+
+
+        | Parameter | Type | Description |
+
+        | --- | --- | --- |
+
+        | `bot_inactivity_limit` | integer | Duration in seconds to wait before
+        dropping the call due to bot inactivity.<br>Default: 0 (disabled). |
+
+
+        ### Webhooks & Events
+
+
+        | Parameter | Type | Description |
+
+        | --- | --- | --- |
+
+        | `event_url` | string | HTTP webhook endpoint to receive call lifecycle
+        events via POST <br>(started, ringing, answered, hangup, etc.).<br>**If
+        set, events are always emitted.** |
+
+
+        ### Recording
+
+
+        | Parameter | Type | Description |
+
+        | --- | --- | --- |
+
+        | `disable_recording` | boolean | Disables call recording when set to
+        `true`. Default: `false`<br>( **all calls are recorded by default**). |
+
+
+        ## WebSocket Endpoint Example
+
+
+        | Input | Result |
+
+        | --- | --- |
+
+        | `websocket_host = test.example.com`<br>`websocket_port =
+        8443`<br>`websocket_app = myapp` | `wss://test.example.com:8443/myapp` |
+
+
+        ##  Critical Constraints
+
+
+        | Topic | Detail |
+
+        | --- | --- |
+
+        | Transport Security | Only **`wss://`** is supported. **`ws://` is
+        rejected.** Your WebSocket server must have a valid SSL certificate. |
+
+        | WebSocket Protocol | See **[WebSocket Message
+        Model](https://ld.epicode.in/documentation#tag/WebSocket-Message-Model)**
+        for message structure. |
+
+        | Webhook Schema | See **[Webhook Event URL
+        Payload](https://ld.epicode.in/documentation#tag/Webhook-Event-URL-Payload)**
+        for payload format. |
       operationId: make_call_api_makecall_post
       tags:
         - makecall (Make outbound call)
