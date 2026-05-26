@@ -1,0 +1,91 @@
+
+# IraVoice Sandbox Environment
+
+The Epicode Sandbox environment is provided to help customers safely test and validate their integration before moving to production.
+ 
+This environment allows you to simulate calling workflows, verify API integrations, and ensure system readiness without impacting real users.
+
+## Access Details
+
+In the Sandbox environment, you have access to **2 channels** with a **DID number**. 
+
+To begin using the sandbox, you will be provided with the following details:
+
+- Tenant Id
+- API Credentials (Bearer token: xyz)
+- Campaign Name
+- From Number (DID number)
+
+These credentials should be used exclusively for testing purposes.
+
+
+:::info
+**BASE_URL**: https://sandboxld.epicode.in/api/
+:::
+
+:::info
+**[Click here](/api) for IraVoice API documentation**
+:::
+
+
+
+## Making a test call for IraVoice
+
+Below is a sample request to make call through IraVoice:
+
+```
+curl --location 'https://sandboxld.epicode.in/api/makecall' \\  
+\--header 'Content-Type: application/json' \\  
+\--header 'Authorization: Bearer <Bearer token>' \\  
+\--data '{  
+    "campaign_name": "<campaign_name>",  
+    "tenant_id": "<tenant_id>",  
+    "from_number": "<from_number>",  
+    "to_number": "<your-number>",  
+    "call_params": {  
+        "websocket_host": "<websocket-host>",
+        "websocket_port": "<websocket-port>",
+        "websocket_app": "<websocket-path>",
+        "event_url" : "<your-http-endpoint>"  
+  }  
+}'
+```
+- You can replace the  **websocket_host,** **websocket_port** and **websocket_app** values to match those of your voicebot and **to_number** to the number you are making an outbound call to. 
+- Please refer to the sample websocket code: [**websocket_script**](https://drive.google.com/file/d/1n_dXpTgm5BNImtT1gWIWic6H4eDzNHHv/view?usp=sharing)
+- For more details on **Make Call request parameters**: [Call Params](/api/makecall-make-outbound-call)
+
+### Key configurations:
+
+**Media Stream Format:**  
+The voicebot application must stream audio to IraVoice over WebSocket in the following format:
+
+1. PCM (signed 16-bit)
+2. Sampling rate: 8 kHz or 16 kHz  
+  
+
+**Streaming Modes:**
+
+- **VAD Mode** ("streaming_useraudio": false)
+- Audio is delivered as complete utterances
+- Triggered when the user finishes speaking
+-  **Non-VAD Mode** ("streaming_useraudio": true)
+- Audio is streamed continuously in chunks
+- Default chunk size: 3200 bytes (~200 ms of audio)
+
+**Supported Codecs by IraVoice:**
+
+- PCMU (8kHz)
+- PCMA (8kHz)
+- OPUS (16kHz)
+- G722 (16khz)
+- G722.2 / AMR-WB (16kHz)
+
+## Making an inbound call in Iravoice
+
+To configure inbound calling for a particular number you can reach out to Epicode support team and share the call params you want us to set for the inbound calls.
+
+:::tip
+### Frequently Asked questions
+
+For common doubts and queries with IraVoice please refer  to [IraVoice FAQ's](https://epicode.in/iravoice#FAQs)
+:::
