@@ -176,6 +176,15 @@ Sales
       }
     },
   ],
+  docs: {
+    files: "pages/**/*.{md,mdx}", // Your markdown files
+    publishMarkdown: true, // Generate .md files
+    llms: {
+      llmsTxt: true, // Generate llms.txt
+      llmsTxtFull: true, // Generate llms-full.txt
+      includeProtected: false, // Exclude protected routes
+    },
+  },
 };
 
 

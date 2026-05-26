@@ -52,21 +52,21 @@ If you intend to use a custom storage endpoint please adhere to the following re
 
 ```
 HTTP Method  
----
+
 Post
 
 HTTP Request Headers 
----
+
 File-Name: contains the name of the file. For call recordings, the name will be of the format "<call_uuid>.<wav|mp3>"
 Content-Type: application/octet-stream 
 
 Request Body
---- 
+
 The file contents will be sent as binary data in the request body.  
 We can also enable brotli compression for file contents.  
 
 Expected Response
---- 
+
 Response Status Code: 200
 Response Body: ok
 Response Content Type: text/plain
