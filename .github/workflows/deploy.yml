@@ -39,7 +39,7 @@ jobs:
         run: npm run build
 
       - name: No Jekyll
-        run:  touch dist/.nojekyll
+        run:  touch dist/epicode-docs/.nojekyll
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
