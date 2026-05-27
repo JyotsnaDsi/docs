@@ -8,5 +8,7 @@
 - [/sandbox/introduction](/epicode-docs/sandbox/introduction.md)
 - [/sandbox/customerinfo](/epicode-docs/sandbox/customerinfo.md)
 - [/sandbox/compliance](/epicode-docs/sandbox/compliance.md)
-- [/sandbox/botcomposescript](/epicode-docs/sandbox/botcomposescript.md)
 - [/sandbox/botcompose](/epicode-docs/sandbox/botcompose.md)
+- [/iravoice/websocketmessage](/epicode-docs/iravoice/websocketmessage.md)
+- [/iravoice/webhookevent](/epicode-docs/iravoice/webhookevent.md)
+- [/botcompose/botcomposescript](/epicode-docs/botcompose/botcomposescript.md)

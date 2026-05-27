@@ -71,6 +71,13 @@ curl --location 'https://sandboxld.epicode.in/api/makecall' \\
   - Set "**streaming_useraudio**": **false** if you are using **Non-streaming STT**.
 - Should you require access to CDR transcripts from BotCompose, Call Recordings, or the Live Call Monitor, please let us know.
 
+
+:::info
+### BotCompose Sample Script
+
+You can refer to [BotCompose Sample Script](/botcompose/botcomposescript) for testing purposes.
+:::
+
 :::tip
 ### Frequently Asked questions
 
