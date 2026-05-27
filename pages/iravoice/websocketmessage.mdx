@@ -23,7 +23,7 @@ IraVoice streams customer audio to your AI orchestration and expects bot audio t
 
 Immediately after connection establishment, IraVoice sends a JSON payload containing call metadata:
 
-```json
+```json 
 {
     "call_uuid": "8288ef17-3ab9-4745-b6b5-699dcdf4d7cf",
     "tenant_id": "acme",
@@ -127,7 +127,7 @@ You do not have to control the rate of streaming; simply send audio as it is gen
 | Direction     | AI Orchestration → IraVoice                                       |
 | Sampling rate | Must match the rate configured in `call_params.tts_sampling_rate` |
 
-:::info
+:::warning
 ### Important
 
 * If your TTS output is at a different sampling rate than the call sampling rate, you must configure the `call_params.tts_sampling_rate` to match your TTS output rate.
@@ -228,7 +228,7 @@ This:
 | New question / intent change      | Stop audio   | `clear_play`  |
 
 
-:::info
+:::note
 ### Notes
 
 * Once `pause_play` is called, any new audio chunks received from your AI Orchestration will be buffered until the 20s buffer limit is reached.

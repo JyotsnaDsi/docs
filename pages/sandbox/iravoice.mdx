@@ -1,5 +1,5 @@
 
-# IraVoice Sandbox Environment
+# IraVoice Sandbox
 
 The Epicode Sandbox environment is provided to help customers safely test and validate their integration before moving to production.
  
@@ -19,11 +19,11 @@ To begin using the sandbox, you will be provided with the following details:
 These credentials should be used exclusively for testing purposes.
 
 
-:::info
-**BASE_URL**: https://sandboxld.epicode.in/api/
+:::note
+**Base URL**: https://sandboxld.epicode.in/api/
 :::
 
-:::info
+:::note
 **[Click here](/api) for IraVoice API documentation**
 :::
 

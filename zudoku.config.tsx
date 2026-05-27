@@ -140,8 +140,8 @@ Sales
             "/sandbox/introduction",
             "/sandbox/iravoice",
             "/sandbox/botcompose",
-            "/sandbox/compliance",
             "/sandbox/customerinfo",
+            "/sandbox/compliance",
           ],
         },
         {
@@ -161,8 +161,8 @@ Sales
         },
         {
           type: "category",
-          label: "BotCompose - Voicebot Orchestration",
-          icon: "bot",
+          label: "BotCompose - Orchestration",
+          icon: "box",
           collapsible: false,
           items: [
             {

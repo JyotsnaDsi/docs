@@ -180,7 +180,7 @@ If `event_url` is present in the `call_params` of the `makecall` or `makecalldir
 * Additional event-specific fields may be included depending on the event type.
 
 
-:::info
+:::note
 ### Notes
 
 * `event_url` must be reachable publicly by IraVoice.

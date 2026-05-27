@@ -58,7 +58,7 @@ This is necessary to validate readiness and ensure compliance alignment.
 
 In the event of a complaint, consent records may need to be shared with the SIP trunk provider or relevant authorities.
 
-:::info
+:::danger
 ### Key Information
 
 - **Response Time**: 2 working days from receiving the audit notice
@@ -80,7 +80,9 @@ When Epicode notifies you of a call audit, follow these steps:
 3. Submit the proof within 2 working  days: Ensure all required information is included (see “Consent Evidence Requirements” below).
 4. Remove the recipient from your calling list: Prevent repeat complaints by ensuring the number is not called again.
 
-**Important: Using a different Epicode number to contact the same recipient may be treated as a compliance violation and could disrupt your service.**
+:::danger
+**Important**: Using a different Epicode number to contact the same recipient may be treated as a compliance violation and could disrupt your service.
+:::
 
 ### Consent Evidence Requirements
 
