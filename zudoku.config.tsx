@@ -157,6 +157,8 @@ Sales
             },
             "/iravoice/websocketmessage",
             "/iravoice/webhookevent",
+            "/iravoice/calllatency",
+            "/iravoice/webmonitor",
           ],
         },
         {
@@ -171,6 +173,7 @@ Sales
               "to": "/botcomposeapi"
             },
             "/botcompose/botcomposescript",
+            "/botcompose/botlatency",
           ],
         },
       ],
