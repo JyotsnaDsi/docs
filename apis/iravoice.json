@@ -8,6 +8,12 @@
       "url": "/static/epicode-logo-web.png"
     }
   },
+  "servers": [
+    {
+      "url": "https://sandboxld.epicode.in/api/",
+      "description": "IraVoice API Server"
+    }
+  ],
   "paths": {
     "/api/makecall": {
       "post": {
