@@ -44,6 +44,29 @@ Please ensure that the appropriate number series is used based on the nature of 
 - You are responsible for ensuring that **all** **call recipients have provided the necessary consent.**
 - If you are using the production setup for running live campaigns, please share the CRM or any relevant screenshots before initiating the calls. 
 
+### TRAI Regulations for 140-Series Numbers
+
+When creating outbound campaigns, it is important to configure campaign working hours in accordance with TRAI (Telecom Regulatory Authority of India) regulations.
+
+140-series numbers are designated for telemarketing purposes and are governed by strict telecom compliance rules enforced by service providers.
+
+#### Allowed Calling Hours
+
+| Day               | Allowed Time Window          |
+| ----------------- | ---------------------------- |
+| Monday – Saturday | 10:00 AM to 7:00 PM          |
+| Sunday            | Outbound calling not allowed |
+
+:::caution
+
+* Inbound calling is not supported on 140-series numbers.
+* Calls attempted outside the permitted time window may be rejected by telecom providers or result in service errors.
+* These restrictions are enforced by telecom operators to ensure compliance with TRAI regulations.
+
+It is recommended to configure campaign working hours accordingly to avoid call failures and regulatory violations.
+:::
+
+
 ## Pre-Go-Live Validation
 
 Before initiating production campaigns, customers are required to share:

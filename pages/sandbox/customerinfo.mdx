@@ -18,11 +18,12 @@ Please provide the following details for the authorized signatory. This informat
 
 6\. Company Address 
 
-**_Fill the following form_** **_to proceed :_** [**==Authorized Signatory Details==**](https://docs.google.com/forms/d/e/1FAIpQLSeul8ozeo9CY4-RyVbGa9ESfBQgrxS0gwmXOUSS1dwAuM4IKg/viewform?usp=sharing&ouid=117817350829885918313)
+:::note
+Fill the following form to proceed : [**==Authorized Signatory Details==**](https://iravoice.epicode.in/signup/)
+:::
 
 Signing the consent form is mandatory to proceed with the setup, as it helps ensure customer integrity.Please find the sample consent form details at the link below. 
 
-[**Consent Form**](https://docs.google.com/document/d/1GF5vob2VHyo8xoExFnWe3Trbpwuc5kFP1zHMwxV4gso/edit?usp=sharing)
 
 ## Recording Upload Details 
 

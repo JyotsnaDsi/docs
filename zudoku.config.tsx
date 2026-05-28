@@ -153,10 +153,12 @@ Sales
             {
               "type": "link",
               "label": "IraVoice API",
-              "to": "/api"
+              "to": "/api",
+              "icon": "cog",
             },
             "/iravoice/websocketmessage",
             "/iravoice/webhookevent",
+            "/iravoice/campaignmanager",
             "/iravoice/calllatency",
             "/iravoice/webmonitor",
           ],
@@ -170,7 +172,8 @@ Sales
             {
               "type": "link",
               "label": "BotCompose API",
-              "to": "/botcomposeapi"
+              "to": "/botcomposeapi",
+              "icon": "cog"
             },
             "/botcompose/botcomposescript",
             "/botcompose/botlatency",
