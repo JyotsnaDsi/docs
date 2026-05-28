@@ -210,11 +210,12 @@ Please provide the following details for the authorized signatory. This informat
 
 6\. Company Address 
 
-**_Fill the following form_** **_to proceed :_** [**==Authorized Signatory Details==**](https://docs.google.com/forms/d/e/1FAIpQLSeul8ozeo9CY4-RyVbGa9ESfBQgrxS0gwmXOUSS1dwAuM4IKg/viewform?usp=sharing&ouid=117817350829885918313)
+:::note
+Fill the following form to proceed : [**==Authorized Signatory Details==**](https://iravoice.epicode.in/signup/)
+:::
 
 Signing the consent form is mandatory to proceed with the setup, as it helps ensure customer integrity.Please find the sample consent form details at the link below. 
 
-[**Consent Form**](https://docs.google.com/document/d/1GF5vob2VHyo8xoExFnWe3Trbpwuc5kFP1zHMwxV4gso/edit?usp=sharing)
 
 ## Recording Upload Details 
 
@@ -332,6 +333,29 @@ Please ensure that the appropriate number series is used based on the nature of 
 - Approved configurations and integrations may be enabled.
 - You are responsible for ensuring that **all** **call recipients have provided the necessary consent.**
 - If you are using the production setup for running live campaigns, please share the CRM or any relevant screenshots before initiating the calls. 
+
+### TRAI Regulations for 140-Series Numbers
+
+When creating outbound campaigns, it is important to configure campaign working hours in accordance with TRAI (Telecom Regulatory Authority of India) regulations.
+
+140-series numbers are designated for telemarketing purposes and are governed by strict telecom compliance rules enforced by service providers.
+
+#### Allowed Calling Hours
+
+| Day               | Allowed Time Window          |
+| ----------------- | ---------------------------- |
+| Monday – Saturday | 10:00 AM to 7:00 PM          |
+| Sunday            | Outbound calling not allowed |
+
+:::caution
+
+* Inbound calling is not supported on 140-series numbers.
+* Calls attempted outside the permitted time window may be rejected by telecom providers or result in service errors.
+* These restrictions are enforced by telecom operators to ensure compliance with TRAI regulations.
+
+It is recommended to configure campaign working hours accordingly to avoid call failures and regulatory violations.
+:::
+
 
 ## Pre-Go-Live Validation
 
@@ -1169,6 +1193,103 @@ If `event_url` is present in the `call_params` of the `makecall` or `makecalldir
 
 :::
 
+
+
+
+---
+
+## Document: /iravoice/campaignmanager
+
+URL: /epicode-docs/iravoice/campaignmanager
+
+
+# Campaign Manager
+
+The IraVoice Campaign Manager enables developers and administrators to create, configure, and manage outbound calling campaigns based on the available SIP trunk and dialer capacity.
+
+Campaigns can be configured for different dialing strategies and activated to handle large-scale outbound calling operations efficiently.
+
+![](/epicode-docs/campaign-mgr.png)
+
+## Campaign Configuration Parameters
+
+![](/epicode-docs/create-cmpn.png)
+
+When creating a campaign, the following parameters must be configured:
+
+### Campaign Name
+
+A unique name used to identify the campaign.
+
+### Tenant ID
+
+The unique tenant identifier assigned by the Epicode team during onboarding.
+
+### Campaign Type
+
+| Campaign Type   | Description                                                                                                                                      |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Voicebot**    | Used for AI voicebot-driven outbound campaigns.                                                                                                  |
+| **Preview**     | Used for agent-assisted calling where agents review customer information before initiating a one-to-one call.                                    |
+| **Progressive** | Used for continuous agent-based dialing where calls are initiated based on agent availability, enabling minimum idle time.                             |
+| **Predictive**  | Used for high-volume agent campaigns where the system predicts the number of calls to dial based on agent availability and answer rate patterns. |
+
+### Working Hours
+
+Defines the start and stop time during which the campaign is allowed to run.
+
+:::caution
+**Important:** Outbound campaigns using 140-series numbers in India must comply with TRAI-approved calling hours and telecom regulations. 
+Calls placed outside the permitted time window may be rejected by telecom providers.
+To learn more, [click here](/sandbox/compliance#TRAI-Regulations-for-140-Series-Numbers).
+:::
+
+### Cluster ID
+
+Each campaign must be associated with one or more IraVoice Dialer clusters.
+
+A cluster can hold one or more dialer components responsible for processing outbound calls.
+
+### Maximum Concurrent Call Limit
+
+Defines the maximum number of concurrent outbound calls allowed for a cluster.
+
+This limit is generally configured based on the allocated SIP trunk channel capacity.
+
+### Cluster Weightage
+
+Determines the priority of a cluster within a campaign.
+
+Clusters with higher weightage receive higher call allocation priority compared to other clusters in the same campaign.
+
+### Gateway
+
+Specifies the gateway connected to the SIP trunk through which IraVoice initiates outbound calls.
+
+### DID Range
+
+Defines the DID number range allocated to the associated SIP trunk for outbound calling.
+
+:::tip
+Click on **Sync** to synchronize the campaign configuration across all associated campaigns.
+
+The sync operation loads newly created campaigns and applies any configuration updates made to existing campaigns at any point in time.
+:::
+
+## Cluster and Gateway Architecture
+
+A single campaign can contain multiple dialer clusters.
+
+Each  cluster can further contain multiple gateways connected to different SIP trunks or telecom providers.
+
+This architecture provides:
+
+* Load distribution across dialers
+* High availability and failover handling
+* Flexible SIP trunk utilization
+* Scalability for high-volume outbound campaigns
+
+The Campaign Manager dynamically distributes outbound traffic across configured clusters and gateways based on campaign settings, weightage, and available capacity.
 
 
 

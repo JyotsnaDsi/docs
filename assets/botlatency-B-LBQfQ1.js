@@ -1,4 +1,4 @@
-import{t as e}from"./jsx-runtime-BFqoZbY3.js";import{n as t}from"./lib-Fyu0Mufw.js";var n=e(),r=`For BotCompose calls, latency analysis can be performed using the BotCompose CDRs.`,i=[{depth:1,text:`VoiceBot Latency Monitoring`,id:`voicebot-latency-monitoring`,children:[{depth:2,text:`Example`,id:`example`}]}],a={lastModifiedTime:`2026-05-28T08:28:17.000Z`},o=`pages/botcompose/botlatency.mdx`;function s(e){let r={code:`code`,h1:`h1`,h2:`h2`,li:`li`,p:`p`,pre:`pre`,span:`span`,ul:`ul`,...t(),...e.components};return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(r.h1,{id:`voicebot-latency-monitoring`,children:`VoiceBot Latency Monitoring`}),`
+import{t as e}from"./jsx-runtime-BFqoZbY3.js";import{n as t}from"./lib-Fyu0Mufw.js";var n=e(),r=`For BotCompose calls, latency analysis can be performed using the BotCompose CDRs.`,i=[{depth:1,text:`VoiceBot Latency Monitoring`,id:`voicebot-latency-monitoring`,children:[{depth:2,text:`Example`,id:`example`}]}],a={lastModifiedTime:`2026-05-28T12:44:35.000Z`},o=`pages/botcompose/botlatency.mdx`;function s(e){let r={code:`code`,h1:`h1`,h2:`h2`,li:`li`,p:`p`,pre:`pre`,span:`span`,ul:`ul`,...t(),...e.components};return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(r.h1,{id:`voicebot-latency-monitoring`,children:`VoiceBot Latency Monitoring`}),`
 `,(0,n.jsx)(r.p,{children:`For BotCompose calls, latency analysis can be performed using the BotCompose CDRs.`}),`
 `,(0,n.jsxs)(r.p,{children:[`The CDR contains `,(0,n.jsx)(r.code,{inline:`true`,children:`latency_metrics`}),`, which provides per-call timing information for:`]}),`
 `,(0,n.jsxs)(r.ul,{children:[`
@@ -53,4 +53,4 @@ import{t as e}from"./jsx-runtime-BFqoZbY3.js";import{n as t}from"./lib-Fyu0Mufw.
 `,(0,n.jsx)(r.li,{children:`The AI processing pipeline (LLM/STT/TTS)`}),`
 `,(0,n.jsx)(r.li,{children:`Network and media streaming layers`}),`
 `]})]})}function c(e={}){let{wrapper:r}={...t(),...e.components};return r?(0,n.jsx)(r,{...e,children:(0,n.jsx)(s,{...e})}):s(e)}export{o as __filepath,c as default,r as excerpt,a as frontmatter,i as tableOfContents};
-//# sourceMappingURL=botlatency-Cl5qKaf1.js.map
+//# sourceMappingURL=botlatency-B-LBQfQ1.js.map
