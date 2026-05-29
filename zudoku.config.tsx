@@ -10,6 +10,18 @@ const config: ZudokuConfig = {
     "applicationName": "Epicode Docs",
     "keywords": ["example", "website", "metadata", "SEO"],
   },
+  search: {
+    type: "pagefind",
+    // Optional: Maximum number of sub results per page
+    maxSubResults: 3,
+    // Optional: Configure search result ranking (defaults shown below)
+    ranking: {
+      termFrequency: 0.8,
+      pageLength: 0.6,
+      termSimilarity: 1.2,
+      termSaturation: 1.2,
+    },
+  },
   theme: {
     "light": {
       "background": "oklch(100% 0 none)",
@@ -59,7 +71,7 @@ const config: ZudokuConfig = {
   site: {
     title: "Epicode Docs",
     logo: {
-      src: { light: "/epicode-logo-web.png", dark: "/epicode-logo-white.svg" },
+      src: { light: "/epicode-logo-web.png", dark: "/epicode-logo-white.webp" },
       alt: "Epicode Logo",
       width: "130px",
     },
@@ -101,7 +113,7 @@ const config: ZudokuConfig = {
       logo: {
         src: {
           light: "/epicode-docs/epicode-logo-web.png",
-          dark: "/epicode-docs/epicode-logo-white.svg"
+          dark: "/epicode-docs/epicode-logo-white.webp"
         },
         alt: "Company Logo",
         width: "120px" // optional width
