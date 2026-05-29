@@ -226,7 +226,6 @@ Supported events include:
 | Hangup               |
 | Call Quality Metrics |
 
-
 ### Sample Ringing Event
 
 ```json
@@ -234,16 +233,25 @@ Supported events include:
   "event_name": "iravoice::ringing",
   "event_data": {
     "call_uuid": "cd94574d-e51a-4689-80ad-daf753453ce9",
+    "other_leg_uuid": "799c937b-b34d-47fc-8238-1088439a1ad0",
+    "network_ip": "10.5.110.117",
     "tenant_id": "xyz",
     "call_type": "proxy",
     "to_number": "+91700751234",
     "from_number": "+917943491234",
+    "call_params": {
+      "call_direction": "outbound",
+      "event_url": "http://201.24.126.28:8003/epicode-logs",
+      "recording_format": "wav"
+    },
+    "sip_fields": {
+      "livekit_id": "cf6d8581-7128-4dd7-9ce5-8f6871057626"
+    },
     "direction": "outbound",
     "timestamp": "2026-02-18T11:59:43.149058Z"
   }
 }
 ```
-
 
 ### Sample Bridged Event
 
@@ -253,13 +261,20 @@ Supported events include:
   "event_data": {
     "tenant_id": "xyz",
     "call_uuid": "799c937b-b34d-47fc-8238-1088439a1ad0",
+    "call_params": {
+      "call_direction": "outbound",
+      "event_url": "http://202.24.16.228:8003/epicode-logs",
+      "recording_format": "wav"
+    },
+    "dialer_ip": "192.168.11.13",
+    "gateway": "",
     "call_type": "proxy",
     "direction": "inbound",
+    "network_ip": "127.0.0.1",
     "timestamp": "2026-02-18T11:59:43.160396Z"
   }
 }
 ```
-
 
 ### Sample Unbridged Event
 
@@ -269,13 +284,20 @@ Supported events include:
   "event_data": {
     "tenant_id": "xyz",
     "call_uuid": "62b0ab5e-483d-4e61-8143-ecde97e36d23",
+    "call_params": {
+      "call_direction": "outbound",
+      "event_url": "http://202.24.16.28:8003/epicode-logs",
+      "recording_format": "wav"
+    },
+    "dialer_ip": "192.168.11.13",
+    "gateway": "",
     "call_type": "proxy",
     "direction": "inbound",
+    "network_ip": "127.0.0.1",
     "timestamp": "2026-02-18T11:59:42.465100Z"
   }
 }
 ```
-
 
 ### Sample Hangup Event
 
@@ -285,10 +307,24 @@ Supported events include:
   "event_data": {
     "tenant_id": "xyz",
     "call_uuid": "62b0ab5e-483d-4e61-8143-ecde97e36d23",
-    "hangup_cause": "NORMAL_CLEARING",
+    "call_params": {
+      "call_direction": "outbound",
+      "event_url": "http://202.24.16.228:8003/epicode-logs",
+      "recording_format": "wav"
+    },
+    "dialer_ip": "192.168.11.13",
+    "gateway": "",
+    "call_type": "proxy",
+    "direction": "inbound",
+    "network_ip": "127.0.0.1",
     "failure_status": "480",
     "failure_phrase": "Temporarily not available",
-    "direction": "inbound",
+    "from_number": "+917943491234",
+    "to_number": "7899818041234",
+    "hangup_cause": "NORMAL_CLEARING",
+    "sip_fields": {
+      "livekit_id": "c12ac441-399c-45d8-bc99-ae187cc3bfcc"
+    },
     "timestamp": "2026-02-18T11:59:42.466362Z"
   }
 }
