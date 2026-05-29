@@ -85,11 +85,13 @@ From your application, create a SIP participant in a LiveKit room with:
 **Reference:**
 https://docs.livekit.io/telephony/making-calls/outbound-calls/
 
+:::note
 ### Important Notes
 
 1. Prefix the destination number with **789** (or another mutually agreed prefix) before placing the call.
 2. This prefix is used by the **Epicode dialplan** to identify and correctly route calls originating from your LiveKit deployment.
 3. Custom SIP `X-*` headers can be passed and will be forwarded to IraVoice.
+:::
 
 ### Example
 
@@ -291,6 +293,8 @@ Supported events include:
 
 ---
 
-## Support
+:::note
+### Support
 
 For SIP credentials, routing configuration, recording setup, webhook integration, or troubleshooting assistance, please contact the **Epicode Support Team**.
+:::
