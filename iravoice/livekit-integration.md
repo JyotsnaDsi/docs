@@ -241,7 +241,7 @@ Supported events include:
     "from_number": "+917943491234",
     "call_params": {
       "call_direction": "outbound",
-      "event_url": "http://201.24.126.28:8003/epicode-logs",
+      "event_url": "http://192.168.1.5:8003/epicode-logs",
       "recording_format": "wav"
     },
     "sip_fields": {
@@ -263,7 +263,7 @@ Supported events include:
     "call_uuid": "799c937b-b34d-47fc-8238-1088439a1ad0",
     "call_params": {
       "call_direction": "outbound",
-      "event_url": "http://202.24.16.228:8003/epicode-logs",
+      "event_url": "http://192.168.1.5:8003/epicode-logs",
       "recording_format": "wav"
     },
     "dialer_ip": "192.168.11.13",
@@ -286,7 +286,7 @@ Supported events include:
     "call_uuid": "62b0ab5e-483d-4e61-8143-ecde97e36d23",
     "call_params": {
       "call_direction": "outbound",
-      "event_url": "http://202.24.16.28:8003/epicode-logs",
+      "event_url": "http://192.168.1.5:8003/epicode-logs",
       "recording_format": "wav"
     },
     "dialer_ip": "192.168.11.13",
@@ -309,7 +309,7 @@ Supported events include:
     "call_uuid": "62b0ab5e-483d-4e61-8143-ecde97e36d23",
     "call_params": {
       "call_direction": "outbound",
-      "event_url": "http://202.24.16.228:8003/epicode-logs",
+      "event_url": "http://192.168.1.5:8003/epicode-logs",
       "recording_format": "wav"
     },
     "dialer_ip": "192.168.11.13",
