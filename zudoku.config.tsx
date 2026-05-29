@@ -170,10 +170,11 @@ Sales
             },
             "/iravoice/websocket-message-model",
             "/iravoice/webhook-event",
+            "iravoice/bridge-call-to-agent",
             "/iravoice/campaign-manager",
             "/iravoice/call-latency",
             "/iravoice/web-monitor",
-            "/iravoice/livekit-integration"
+            "/iravoice/livekit-integration",
           ],
         },
         {
