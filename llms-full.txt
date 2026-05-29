@@ -1441,8 +1441,8 @@ Supported events include:
     "network_ip": "10.5.110.117",
     "tenant_id": "xyz",
     "call_type": "proxy",
-    "to_number": "+91700751234",
-    "from_number": "+917943491234",
+    "to_number": "+911234567899",
+    "from_number": "+911234567890",
     "call_params": {
       "call_direction": "outbound",
       "event_url": "http://192.168.1.5:8003/epicode-logs",
@@ -1457,11 +1457,11 @@ Supported events include:
 }
 ```
 
-### Sample Bridged Event
+### Sample Answered Event
 
 ```json
 {
-  "event_name": "iravoice::bridged",
+  "event_name": "iravoice::answered",
   "event_data": {
     "tenant_id": "xyz",
     "call_uuid": "799c937b-b34d-47fc-8238-1088439a1ad0",
@@ -1475,30 +1475,10 @@ Supported events include:
     "call_type": "proxy",
     "direction": "inbound",
     "network_ip": "127.0.0.1",
-    "timestamp": "2026-02-18T11:59:43.160396Z"
-  }
-}
-```
-
-### Sample Unbridged Event
-
-```json
-{
-  "event_name": "iravoice::unbridged",
-  "event_data": {
-    "tenant_id": "xyz",
-    "call_uuid": "62b0ab5e-483d-4e61-8143-ecde97e36d23",
-    "call_params": {
-      "call_direction": "outbound",
-      "event_url": "http://192.168.1.5:8003/epicode-logs",
-      "recording_format": "wav"
-    },
-    "dialer_ip": "192.168.11.13",
-    "gateway": "",
-    "call_type": "proxy",
-    "direction": "inbound",
-    "network_ip": "127.0.0.1",
-    "timestamp": "2026-02-18T11:59:42.465100Z"
+    "timestamp": "2026-02-18T11:59:43.160396Z",
+    "sip_fields": {
+      "livekit_id": "cf6d8581-7128-4dd7-9ce5-8f6871057626"
+    }
   }
 }
 ```
@@ -1523,8 +1503,8 @@ Supported events include:
     "network_ip": "127.0.0.1",
     "failure_status": "480",
     "failure_phrase": "Temporarily not available",
-    "from_number": "+917943491234",
-    "to_number": "7899818041234",
+    "from_number": "+917123451234",
+    "to_number": "1234567890",
     "hangup_cause": "NORMAL_CLEARING",
     "sip_fields": {
       "livekit_id": "c12ac441-399c-45d8-bc99-ae187cc3bfcc"
@@ -1533,6 +1513,31 @@ Supported events include:
   }
 }
 ```
+
+### Sample Call Quality Event
+
+```json
+{
+    "event_name": "iravoice::call_quality",
+    "event_data": {
+        "tenant_id": "xyz",
+        "call_uuid": "62b0ab5e-483d-4e61-8143-ecde97e36d23",
+        "call_params": {
+            "call_direction": "outbound"
+        },
+        "dialer_ip": "192.168.11.13",
+        "gateway": "",
+        "call_type": "proxy",
+        "direction": "inbound",
+        "network_ip": "127.0.0.1",
+        "mos": "4.50",
+        "quality": "100.00",
+        "sip_fields": {
+          "livekit_id": "c12ac441-399c-45d8-bc99-ae187cc3bfcc"
+        },
+        "timestamp": "2026-02-18T11:59:42.765432Z"
+    }
+}
 
 ---
 
