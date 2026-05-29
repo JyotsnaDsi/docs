@@ -334,6 +334,7 @@ Supported events include:
         "timestamp": "2026-02-18T11:59:42.765432Z"
     }
 }
+```
 
 ---
 
