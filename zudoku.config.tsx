@@ -168,12 +168,12 @@ Sales
               "to": "/api",
               "icon": "cog",
             },
-            "/iravoice/websocketmessage",
-            "/iravoice/webhookevent",
-            "/iravoice/campaignmanager",
-            "/iravoice/calllatency",
-            "/iravoice/webmonitor",
-            "/iravoice/livekitintegration"
+            "/iravoice/websocket-message-model",
+            "/iravoice/webhook-event",
+            "/iravoice/campaign-manager",
+            "/iravoice/call-latency",
+            "/iravoice/web-monitor",
+            "/iravoice/livekit-integration"
           ],
         },
         {
