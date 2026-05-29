@@ -123,7 +123,6 @@ Your documentation must clearly demonstrate the recipient agreed to receive call
   - CRM screenshots displaying the above details
   - Signed consent forms
   - Digital opt-in records
-  -        
 
 :::warning
 Note: 
