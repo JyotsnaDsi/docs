@@ -1298,9 +1298,7 @@ Example:
 
 ```json
 {
-  "call_uuid": "12345678-abcd-1234-abcd-1234567890ab",
-  "from_number": "+919999999999",
-  "to_number": "+918888888888"
+  "call_uuid": "12345678-abcd-1234-abcd-1234567890ab"
 }
 ```
 
