@@ -34,10 +34,10 @@ These credentials should be used exclusively for testing purposes.
 Below is a sample request to make call through IraVoice:
 
 ```
-curl --location 'https://sandboxld.epicode.in/api/makecall' \\  
-\--header 'Content-Type: application/json' \\  
-\--header 'Authorization: Bearer <Bearer token>' \\  
-\--data '{  
+curl --location 'https://sandboxld.epicode.in/api/makecall' \
+ --header 'Content-Type: application/json' \
+ --header 'Authorization: Bearer <Bearer token>' \
+ --data '{  
     "campaign_name": "<campaign_name>",  
     "tenant_id": "<tenant_id>",  
     "from_number": "<from_number>",  

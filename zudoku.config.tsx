@@ -173,6 +173,7 @@ Sales
             "/iravoice/call-latency",
             "/iravoice/web-monitor",
             "/iravoice/livekit-integration",
+            "/iravoice/vapi-integration",
           ],
         },
         {

@@ -48,10 +48,10 @@ You will be provided with below details over the mail:
 **Sample CURL request for initiating a MakeCall using a BotCompose-configured voice bot** 
 
 ```
-curl --location 'https://sandboxld.epicode.in/api/makecall' \\  
-\--header 'Content-Type: application/json' \\  
-\--header 'Authorization: Bearer &lt;Bearer token&gt;' \\  
-\--data '{  
+curl --location 'https://sandboxld.epicode.in/api/makecall' \
+ --header 'Content-Type: application/json' \
+ --header 'Authorization: Bearer <Bearer token>' \
+ --data '{  
     "campaign_name": "<campaign_name>",  
     "tenant_id": "<tenant_id>",  
     "from_number": "<from_number>",  
