@@ -27,7 +27,7 @@ These credentials should be used exclusively for testing purposes.
 </Stepper>
 
 :::note
-[Click here](/botcompose/create-voicebot) for more information on voicebot creation and available plugins.
+[Click here](/botcompose/create-voicebot) for a complete guide to voicebot creation and available plugins.
 :::
 
 :::tip
