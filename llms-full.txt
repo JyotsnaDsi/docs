@@ -2197,7 +2197,7 @@ Before creating a voicebot, you must obtain credentials from the AI providers yo
    When a cached response is available, BotCompose can serve the pre-generated audio directly, reducing TTS generation overhead and improving response times.
 
     :::note
-    For detailed information, refer to the [**Populate TTS Cache API**](/botcomposeapi/populate-tts-cache).
+    For detailed information, refer to [**Populate TTS Cache API**](/botcomposeapi/populate-tts-cache).
     :::
 
 </Stepper>
