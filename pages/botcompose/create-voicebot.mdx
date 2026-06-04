@@ -68,7 +68,7 @@ Before creating a voicebot, you must obtain credentials from the AI providers yo
 
     This approach is useful when:
 
-    * Tool definitions need to be updated without recreating the bot
+    * Tool definitions need to be updated as the calls happen.
     * Multiple bots share the same tools
     * Tool configurations are managed dynamically by external systems
 
