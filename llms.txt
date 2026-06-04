@@ -17,5 +17,6 @@
 - [/iravoice/campaign-manager](/epicode-docs/iravoice/campaign-manager.md)
 - [/iravoice/call-latency](/epicode-docs/iravoice/call-latency.md)
 - [/iravoice/bridge-call-to-agent](/epicode-docs/iravoice/bridge-call-to-agent.md)
+- [/botcompose/create-voicebot](/epicode-docs/botcompose/create-voicebot.md)
 - [/botcompose/botlatency](/epicode-docs/botcompose/botlatency.md)
 - [/botcompose/botcomposescript](/epicode-docs/botcompose/botcomposescript.md)

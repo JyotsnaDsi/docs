@@ -5,565 +5,6 @@
 
 ---
 
-## Document: /sandbox/iravoice
-
-URL: /epicode-docs/sandbox/iravoice
-
-
-
-# IraVoice Sandbox
-
-The Epicode Sandbox environment is provided to help customers safely test and validate their integration before moving to production.
- 
-This environment allows you to simulate calling workflows, verify API integrations, and ensure system readiness without impacting real users.
-
-## Access Details
-
-In the Sandbox environment, you have access to **2 channels** with a **DID number**. 
-
-To begin using the sandbox, you will be provided with the following details:
-
-- Tenant Id
-- API Credentials (Bearer token: xyz)
-- Campaign Name
-- From Number (DID number)
-
-These credentials should be used exclusively for testing purposes.
-
-
-:::note
-**Base URL**: https://sandboxld.epicode.in/api/
-:::
-
-:::note
-**[Click here](/api) for IraVoice API documentation**
-:::
-
-
-
-## Making a test call for IraVoice
-
-Below is a sample request to make call through IraVoice:
-
-```
-curl --location 'https://sandboxld.epicode.in/api/makecall' \
- --header 'Content-Type: application/json' \
- --header 'Authorization: Bearer <Bearer token>' \
- --data '{  
-    "campaign_name": "<campaign_name>",  
-    "tenant_id": "<tenant_id>",  
-    "from_number": "<from_number>",  
-    "to_number": "<your-number>",  
-    "call_params": {  
-        "websocket_host": "<websocket-host>",
-        "websocket_port": "<websocket-port>",
-        "websocket_app": "<websocket-path>",
-        "event_url" : "<your-http-endpoint>"  
-  }  
-}'
-```
-- You can replace the  **websocket_host,** **websocket_port** and **websocket_app** values to match those of your voicebot and **to_number** to the number you are making an outbound call to. 
-- Please refer to the sample websocket code: [**websocket_script**](https://drive.google.com/file/d/1n_dXpTgm5BNImtT1gWIWic6H4eDzNHHv/view?usp=sharing)
-- For more details on **Make Call request parameters**: [Call Params](/api/makecall-make-outbound-call)
-
-### Key configurations:
-
-**Media Stream Format:**  
-The voicebot application must stream audio to IraVoice over WebSocket in the following format:
-
-1. PCM (signed 16-bit)
-2. Sampling rate: 8 kHz or 16 kHz  
-  
-
-**Streaming Modes:**
-
-- **VAD Mode** ("streaming_useraudio": false)
-- Audio is delivered as complete utterances
-- Triggered when the user finishes speaking
--  **Non-VAD Mode** ("streaming_useraudio": true)
-- Audio is streamed continuously in chunks
-- Default chunk size: 3200 bytes (~200 ms of audio)
-
-**Supported Codecs by IraVoice:**
-
-- PCMU (8kHz)
-- PCMA (8kHz)
-- OPUS (16kHz)
-- G722 (16khz)
-- G722.2 / AMR-WB (16kHz)
-
-## Making an inbound call in Iravoice
-
-To configure inbound calling for a particular number you can reach out to Epicode support team and share the call params you want us to set for the inbound calls.
-
-:::tip
-### Frequently Asked questions
-
-For common doubts and queries with IraVoice please refer  to [IraVoice FAQ's](https://epicode.in/iravoice#FAQs)
-:::
-
-
-
----
-
-## Document: /sandbox/introduction
-
-URL: /epicode-docs/sandbox/introduction
-
-
-# Introduction
-
-
-## About Epicode
-
-Epicode provides enterprise-grade telephony infrastructure and middleware for scalable voice AI deployments. Built for modern communication workflows, the platform enables seamless integration across telephony networks, voice channels, and AI voicebot frameworks.
-
-Designed with an API-first architecture, Epicode supports high-scale outbound and inbound calling use cases while offering deployment flexibility across cloud, hybrid, and on-premise environments.
-
----
-
-## Core Capabilities
-
-### Multi-Channel Voice Connectivity With IraVoice
-
-Enable communication across PSTN, SIP, WebRTC, and WhatsApp channels with unified telephony integration for voicebots and AI-driven calling workflows.
-
-### Voice AI Platform Integration
-
-Integrate seamlessly with platforms such as LiveKit, Vapi, and other voice AI frameworks, supporting proxy-mode call handling and external AI orchestration.
-
-### Proven High-Scale Performance
-
-Optimized to handle **5M+ daily calls** with efficient resource utilization, supporting up to **1000 concurrent calls on an 8-core VM**.
-
-### Dedicated Infrastructure
-
-Deploy with dedicated VMs, bandwidth allocation, DID numbers, and configurable CPS (Calls Per Second) limits tailored to deployment requirements.
-
-### Flexible Deployment Models
-
-Support for cloud, hybrid, and on-premise deployments to align with enterprise infrastructure, compliance, and operational requirements.
-
-### Fast & Accurate CPA Detection
-
-Outbound CPA (Call Progress Analysis) detection in as little as **1.75 seconds** with **95%–98% accuracy** for efficient outbound campaign automation.
-
-### Enterprise-Grade Scalability & Reliability
-
-A hyper-scalable telephony stack engineered for **99.99% uptime**, ensuring reliable communication for mission-critical voice AI applications.
-
----
-
-
-This document serves as a comprehensive onboarding guide for customers integrating with the Epicode products. It outlines the necessary steps to configure your environment, interact with platform APIs, and deploy calling solutions while adhering to regulatory and compliance requirements.
-
-The guide is intended to ensure a smooth onboarding experience and to enable efficient implementation of both outbound and inbound communication workflows.
-
-:::note
-[**Get Started With IraVoice**](/sandbox/iravoice)
-:::
-
-:::note
-[**Get Started With BotCompose**](/sandbox/botcompose)
-:::
-
-:::note
-[**Regulatory Compliances**](/sandbox/compliance)
-:::
-
-:::note
-[**Customer Information**](/sandbox/customerinfo)
-:::
-
-![](/api/files/019e1658-db77-7786-817c-6bf9b6b0724f/iravoice.png)
-
-
-
-
-
-
-
----
-
-## Document: /sandbox/customerinfo
-
-URL: /epicode-docs/sandbox/customerinfo
-
-
-# Customer Information & Required Details
-
-To proceed with onboarding and ensure a smooth setup, please provide the following details: 
-
-## Authorized Signatory Details 
-
-Please provide the following details for the authorized signatory. This information is required for the consent form and to proceed with documentation.   
-
-1\. Company Legal Name
-
-2\. Authorized Representative
-
-3\. Designation
-
-4\. Contact Email
-
-5\. Contact Number
-
-6\. Company Address 
-
-:::note
-Fill the following form to proceed : [**==Authorized Signatory Details==**](https://iravoice.epicode.in/signup/)
-:::
-
-Signing the consent form is mandatory to proceed with the setup, as it helps ensure customer integrity.Please find the sample consent form details at the link below. 
-
-
-## Recording Upload Details 
-
-To enable call recording storage, please provide details for your preferred storage platform: 
-
-### Option 1: Amazon S3 (AWS)
-
-- AWS_ACCESS_KEY_ID
-- AWS_SECRET_ACCESS_KEY
-- S3U_BUCKET_NAME
-- S3U_BUCKET_FOLDER_NAME
-- S3U_AWS_REGION
-
-### Option 2: Google Cloud Storage (GCP) 
-
-- Service account json file
-
-### Option 3: Azure Blob Storage (Microsoft Azure) 
-
-- Container name
-- Storage account name
-- Storage account Key 
-
-### Option 4: Custom / Other Storage Endpoint
-
-If you intend to use a custom storage endpoint please adhere to the following request/ response format:
-
-```
-HTTP Method  
-
-Post
-
-HTTP Request Headers 
-
-File-Name: contains the name of the file. For call recordings, the name will be of the format "<call_uuid>.<wav|mp3>"
-Content-Type: application/octet-stream 
-
-Request Body
-
-The file contents will be sent as binary data in the request body.  
-We can also enable brotli compression for file contents.  
-
-Expected Response
-
-Response Status Code: 200
-Response Body: ok
-Response Content Type: text/plain
-```
-## Business Use Case Details 
-
-- Use Case:
-- Expected Call Volume (Daily/Monthly):
-- Type of Campaign (Inbound / Outbound / Both):
-
-## Go-Live Requirements
-
-- Expected go-live date : 
-
-#### **Compliance & Consent**
-
-- Confirmation that all end-users have provided explicit opt-in consent (Yes/No):
-- Consent Collection Method (e.g., Web Form, CRM, offline forms ):
-
-
-
----
-
-## Document: /sandbox/compliance
-
-URL: /epicode-docs/sandbox/compliance
-
-
-# Regulatory Compliance Requirement (TRAI Guidelines)
-
-All commercial communications in India are governed by the Telecom Regulatory Authority of India.
-
-## Key Concepts
-
-###  DND
-
-- **DND (Do Not Disturb)** = Customers who have opted out of promotional communication
-
-### Types of Communication
-
-|     |     |     |     |
-| --- | --- | --- | --- |
-| **Type** | **Purpose** | **Target Audience** | **Compliance Requirement** |
-| **Promotional / Telemarketing** | To promote products, services, offers, or brand awareness | Customers who have not blocked promotional calls in DND registry | Consent mandatory; |
-| **Service** | To provide information related to an existing service | All existing customers | **Inferred:** (e.g., post product/service purchase info) – No consent required  **Explicit:** (e.g., ongoing purchase, drop-off etc.) – Consent mandatory  Content must be strictly service-related |
-| **Transactional** | To send critical, real-time information within 30 minutes of the transaction | All customers, including DND-registered | High-priority; must not contain promotional material |
-
-## Use of Designated Number Series
-
-As per applicable regulations issued by the Telecom Regulatory Authority of India (TRAI), all businesses engaging in outbound calling must adhere to the following guidelines to ensure compliance:
-
-- **140-series numbers** must be used for all **telemarketing** or **promotional calls**.
-- **160-series numbers** are designated for **transactional** or **service-related communications**. 
-
-The use of regular phone numbers for such activities is not permitted and may result in regulatory non-compliance.
-
-Please ensure that the appropriate number series is used based on the nature of the call  to remain compliant with regulations.
-
-## Usage in Demo vs Production Environments
-
-### POC / Sandbox Usage
-
-- The platform is strictly for internal testing purposes.
-- No calls should be made to real customers or end users.
-- The platform must not be used for production, promotional, marketing, or support activities.
-- **Please ensure that the numbers being dialed are known/test numbers where the recipients are aware and won’t raise any complaints**.
-
-### Production Usage
-
-- Once moving to production, IraVoice will handle live calls and real users as per your requirements.
-- Approved configurations and integrations may be enabled.
-- You are responsible for ensuring that **all** **call recipients have provided the necessary consent.**
-- If you are using the production setup for running live campaigns, please share the CRM or any relevant screenshots before initiating the calls. 
-
-### TRAI Regulations for 140-Series Numbers
-
-When creating outbound campaigns, it is important to configure campaign working hours in accordance with TRAI (Telecom Regulatory Authority of India) regulations.
-
-140-series numbers are designated for telemarketing purposes and are governed by strict telecom compliance rules enforced by service providers.
-
-#### Allowed Calling Hours
-
-| Day               | Allowed Time Window          |
-| ----------------- | ---------------------------- |
-| Monday – Saturday | 10:00 AM to 7:00 PM          |
-| Sunday            | Outbound calling not allowed |
-
-:::caution
-
-* Inbound calling is not supported on 140-series numbers.
-* Calls attempted outside the permitted time window may be rejected by telecom providers or result in service errors.
-* These restrictions are enforced by telecom operators to ensure compliance with TRAI regulations.
-
-It is recommended to configure campaign working hours accordingly to avoid call failures and regulatory violations.
-:::
-
-
-## Pre-Go-Live Validation
-
-Before initiating production campaigns, customers are required to share:
-
-- Sample consent proofs from the CRM system demonstrating that end users have explicitly opted in to receive outbound calls.
-
-Our team needs to verify that these samples contain the required customer information (like **name, phone number, date**, etc), which we must be able to share with the SIP trunk provider whenever we receive a complaint.
-
-This is necessary to validate readiness and ensure compliance alignment.
-
-## Audit and Complaint Handling 
-
-In the event of a complaint, consent records may need to be shared with the SIP trunk provider or relevant authorities.
-
-:::danger
-### Key Information
-
-- **Response Time**: 2 working days from receiving the audit notice
-- **Required Action**: Provide proof of recipient consent (opt-in)
-- **Consequence of Non-Response**: Number disconnection, temporary or permanent account suspension depending on severity
-:::
-
-### Steps to Take If You Receive an Audit Notice
-
-When Epicode notifies you of a call audit, follow these steps:
-
-1. Verify the audit details: 
-   Epicode will provide:
-  - Your Epicode number (caller)
-  - Recipient’s phone number (callee)
-  - Call Date & Time
-  - Complaint Date & Time
-2. Collect consent evidence: Provide documentation showing the recipient explicitly agreed to receive calls from your organization.
-3. Submit the proof within 2 working  days: Ensure all required information is included (see “Consent Evidence Requirements” below).
-4. Remove the recipient from your calling list: Prevent repeat complaints by ensuring the number is not called again.
-
-:::danger
-**Important**: Using a different Epicode number to contact the same recipient may be treated as a compliance violation and could disrupt your service.
-:::
-
-### Consent Evidence Requirements
-
-Your documentation must clearly demonstrate the recipient agreed to receive calls. Acceptable evidence includes:
-
-- Required Elements:
-  - Company name or logo
-  - Recipient name
-  - Recipient phone number
-  - Date consent was provided
-  - Purpose of consent (marketing/promotional communication)
-  - Mode of consent capture (web form / app / SMS / written form)  
-    
-- Accepted Formats:
-  - CRM screenshots displaying the above details
-  - Signed consent forms
-  - Digital opt-in records
-
-:::warning
-Note: 
-- Screenshot must be unedited and authentic.
-- Submit clear, high-quality images with all elements clearly visible.
-- Excel sheets, PDFs, Word documents, or manually prepared files **will not** be accepted
-:::
-
-### Audit Process
-
-1. A recipient files a complaint with their telecom provider.
-2. The telecom provider identifies Epicode as the originating service.
-3. Epicode’s compliance team identifies the customer responsible.
-4. The customer submits consent evidence within 2 working days.
-5. Epicode reviews the evidence and forwards it to the telecom provider.
-6. The customer is notified once the audit is closed.
-
-## Compliance Responsibility
-
-**TRAI regulations are strictly enforced**. Non-compliance may result in actions including, but not limited to:
-
-- Service restrictions
-- Suspension or termination of SIP trunks
-
-Customers are strongly advised to ensure full adherence to all regulatory requirements at all times.
-
-### Consequences
-
-- If valid evidence is submitted on time:
-  - Epicode reviews the submission and may request additional details if needed.
-  - Once approved, the telecom provider closes the audit, and the customer is notified.
-- If evidence is insufficient:
-  - Epicode will request corrected or additional documentation.
-  - Failure to respond within 2 days can lead to temporary suspension, permanent account blocking, or escalation to TRAI.
-- Multiple complaints:
-  - Repeated violations may result in blacklisting.
-  - For resellers, incorrect compliance mapping may result in action on the entire account.
-
-:::info
-Note: Epicode reserves the right to block traffic, disable numbers, or suspend services in accordance with its Acceptable Use Policy.
-:::
-
-:::tip
-### Best Practices to Avoid Audits
-
-- Call only users who have explicitly opted in.
-- Respect rejections: do not call repeatedly if a recipient declines.
-- Refresh consent every 6 months in compliance with TRAI guidelines.
-:::
-
-
----
-
-## Document: /sandbox/botcompose
-
-URL: /epicode-docs/sandbox/botcompose
-
-
-# BotCompose Sandbox
-
-BotCompose is a VoiceBot orchestration engine designed to integrate seamlessly with existing PBX, UC, and Contact Center platforms. It replaces rigid IVR flows with natural conversational AI while staying flexible, performant, and vendor-agnostic across STT, TTS, and LLM components..
-
-:::note
-**Base URL:** https://sandboxwa.epicode.in/api/
-:::
-
-:::note
-[Click here](/botcomposeapi) for **Botcompose API documentation**.
-:::
-
-To begin using botcompose from our sandbox environment, you will be provided with below details:
-
-- Tenant Id
-- API credentials (Bearer token:xyz)
-
-These credentials should be used exclusively for testing purposes.
-
-## Steps to create a voice bot using BotCompose
-
-<Stepper>
-1. [**Add Provider Secrets**](/botcomposeapi/add-secret): Add the STT, TTS, and LLM credentials of the model providers you have procured. 
-2. [**Create the Voicebot**](/botcomposeapi/add-bot): Configure and create your voicebot using the required parameters. 
-
-</Stepper>
-
-
-:::tip
-### BotCompose Sample Script
-
-You can also refer to [BotCompose Sample Script](/botcompose/botcomposescript) for testing purposes.
-:::
-
-
-## Testing the Voicebot
-
-Once your voicebot is created and configured, you can validate its performance using an **IraVoice outbound call**.  
-The outbound call will directly connect to the voicebot you’ve built, allowing end-to-end functional testing.
-
-You will be provided with below details over the mail:
-
-- Tenant Id
-- API Credentials (Bearer token: abc)
-- Campaign Name
-- From Number (DID Number)
-
-**Sample CURL request for initiating a MakeCall using a BotCompose-configured voice bot** 
-
-```
-curl --location 'https://sandboxld.epicode.in/api/makecall' \
- --header 'Content-Type: application/json' \
- --header 'Authorization: Bearer <Bearer token>' \
- --data '{  
-    "campaign_name": "<campaign_name>",  
-    "tenant_id": "<tenant_id>",  
-    "from_number": "<from_number>",  
-    "to_number": "<your-number>",  
-    "call_params": {
-
-        "bot_id": "<unique-name-of-your-voicebot>",  
-        "call_type":"botcompose",
-
-        "streaming_useraudio": false,  
-        "event_url" : "<your-http-endpoint>"  
-    }  
-}'
-```
-:::note
-[Click here](/api) for **IraVoice API documentation**.
-:::
-
-- API request endpoint for integration testing : https://sandboxld.epicode.in/api/makecall 
-- For more details on [**Make Call request parameters**](/api/makecall-make-outbound-call)
-- To connect to the newly created **voicebot**, you must specify the following **within** **call_params**:   
-  - Include "**bot_id**" : "**unique-name-of-your-voicebot**" which was created using BotCompose APIs.
-  - Remove the fields **websocket_host**, **websocket_port** and **websocket_app** and use  "**call_type**":"**botcompose**" field instead.
-  - Set "**streaming_useraudio**": **false** if you are using **Non-streaming STT**.
-- Should you require access to CDR transcripts from BotCompose, Call Recordings, or the Live Call Monitor, please let us know.
-
-
-:::tip
-### Frequently Asked questions
-
-For common doubts and queries with BotCompose please refer to [BotCompose FAQ's](https://epicode.in/botcompose#FAQs).
-:::
-
-
-
-
-
----
-
 ## Document: /iravoice/websocket-message-model
 
 URL: /epicode-docs/iravoice/websocket-message-model
@@ -2071,6 +1512,748 @@ During both transfer flows, the following events are commonly used:
 * Provide fallback messaging to avoid leaving customers in silence.
 * Log all transfer events for troubleshooting and reporting purposes.
 :::
+
+
+---
+
+## Document: /sandbox/iravoice
+
+URL: /epicode-docs/sandbox/iravoice
+
+
+
+# IraVoice Sandbox
+
+The Epicode Sandbox environment is provided to help customers safely test and validate their integration before moving to production.
+ 
+This environment allows you to simulate calling workflows, verify API integrations, and ensure system readiness without impacting real users.
+
+## Access Details
+
+In the Sandbox environment, you have access to **2 channels** with a **DID number**. 
+
+To begin using the sandbox, you will be provided with the following details:
+
+- Tenant Id
+- API Credentials (Bearer token: xyz)
+- Campaign Name
+- From Number (DID number)
+
+These credentials should be used exclusively for testing purposes.
+
+
+:::note
+**Base URL**: https://sandboxld.epicode.in/api/
+:::
+
+:::note
+**[Click here](/api) for IraVoice API documentation**
+:::
+
+
+
+## Making a test call for IraVoice
+
+Below is a sample request to make call through IraVoice:
+
+```
+curl --location 'https://sandboxld.epicode.in/api/makecall' \
+ --header 'Content-Type: application/json' \
+ --header 'Authorization: Bearer <Bearer token>' \
+ --data '{  
+    "campaign_name": "<campaign_name>",  
+    "tenant_id": "<tenant_id>",  
+    "from_number": "<from_number>",  
+    "to_number": "<your-number>",  
+    "call_params": {  
+        "websocket_host": "<websocket-host>",
+        "websocket_port": "<websocket-port>",
+        "websocket_app": "<websocket-path>",
+        "event_url" : "<your-http-endpoint>"  
+  }  
+}'
+```
+- You can replace the  **websocket_host,** **websocket_port** and **websocket_app** values to match those of your voicebot and **to_number** to the number you are making an outbound call to. 
+- Please refer to the sample websocket code: [**websocket_script**](https://drive.google.com/file/d/1n_dXpTgm5BNImtT1gWIWic6H4eDzNHHv/view?usp=sharing)
+- For more details on **Make Call request parameters**: [Call Params](/api/makecall-make-outbound-call)
+
+### Key configurations:
+
+**Media Stream Format:**  
+The voicebot application must stream audio to IraVoice over WebSocket in the following format:
+
+1. PCM (signed 16-bit)
+2. Sampling rate: 8 kHz or 16 kHz  
+  
+
+**Streaming Modes:**
+
+- **VAD Mode** ("streaming_useraudio": false)
+- Audio is delivered as complete utterances
+- Triggered when the user finishes speaking
+-  **Non-VAD Mode** ("streaming_useraudio": true)
+- Audio is streamed continuously in chunks
+- Default chunk size: 3200 bytes (~200 ms of audio)
+
+**Supported Codecs by IraVoice:**
+
+- PCMU (8kHz)
+- PCMA (8kHz)
+- OPUS (16kHz)
+- G722 (16khz)
+- G722.2 / AMR-WB (16kHz)
+
+## Making an inbound call in Iravoice
+
+To configure inbound calling for a particular number you can reach out to Epicode support team and share the call params you want us to set for the inbound calls.
+
+:::tip
+### Frequently Asked questions
+
+For common doubts and queries with IraVoice please refer  to [IraVoice FAQ's](https://epicode.in/iravoice#FAQs)
+:::
+
+
+
+---
+
+## Document: /sandbox/introduction
+
+URL: /epicode-docs/sandbox/introduction
+
+
+# Introduction
+
+
+## About Epicode
+
+Epicode provides enterprise-grade telephony infrastructure and middleware for scalable voice AI deployments. Built for modern communication workflows, the platform enables seamless integration across telephony networks, voice channels, and AI voicebot frameworks.
+
+Designed with an API-first architecture, Epicode supports high-scale outbound and inbound calling use cases while offering deployment flexibility across cloud, hybrid, and on-premise environments.
+
+---
+
+## Core Capabilities
+
+### Multi-Channel Voice Connectivity With IraVoice
+
+Enable communication across PSTN, SIP, WebRTC, and WhatsApp channels with unified telephony integration for voicebots and AI-driven calling workflows.
+
+### Voice AI Platform Integration
+
+Integrate seamlessly with platforms such as LiveKit, Vapi, and other voice AI frameworks, supporting proxy-mode call handling and external AI orchestration.
+
+### Proven High-Scale Performance
+
+Optimized to handle **5M+ daily calls** with efficient resource utilization, supporting up to **1000 concurrent calls on an 8-core VM**.
+
+### Dedicated Infrastructure
+
+Deploy with dedicated VMs, bandwidth allocation, DID numbers, and configurable CPS (Calls Per Second) limits tailored to deployment requirements.
+
+### Flexible Deployment Models
+
+Support for cloud, hybrid, and on-premise deployments to align with enterprise infrastructure, compliance, and operational requirements.
+
+### Fast & Accurate CPA Detection
+
+Outbound CPA (Call Progress Analysis) detection in as little as **1.75 seconds** with **95%–98% accuracy** for efficient outbound campaign automation.
+
+### Enterprise-Grade Scalability & Reliability
+
+A hyper-scalable telephony stack engineered for **99.99% uptime**, ensuring reliable communication for mission-critical voice AI applications.
+
+---
+
+
+This document serves as a comprehensive onboarding guide for customers integrating with the Epicode products. It outlines the necessary steps to configure your environment, interact with platform APIs, and deploy calling solutions while adhering to regulatory and compliance requirements.
+
+The guide is intended to ensure a smooth onboarding experience and to enable efficient implementation of both outbound and inbound communication workflows.
+
+:::note
+[**Get Started With IraVoice**](/sandbox/iravoice)
+:::
+
+:::note
+[**Get Started With BotCompose**](/sandbox/botcompose)
+:::
+
+:::note
+[**Regulatory Compliances**](/sandbox/compliance)
+:::
+
+:::note
+[**Customer Information**](/sandbox/customerinfo)
+:::
+
+![](/api/files/019e1658-db77-7786-817c-6bf9b6b0724f/iravoice.png)
+
+
+
+
+
+
+
+---
+
+## Document: /sandbox/customerinfo
+
+URL: /epicode-docs/sandbox/customerinfo
+
+
+# Customer Information & Required Details
+
+To proceed with onboarding and ensure a smooth setup, please provide the following details: 
+
+## Authorized Signatory Details 
+
+Please provide the following details for the authorized signatory. This information is required for the consent form and to proceed with documentation.   
+
+1\. Company Legal Name
+
+2\. Authorized Representative
+
+3\. Designation
+
+4\. Contact Email
+
+5\. Contact Number
+
+6\. Company Address 
+
+:::note
+Fill the following form to proceed : [**==Authorized Signatory Details==**](https://iravoice.epicode.in/signup/)
+:::
+
+Signing the consent form is mandatory to proceed with the setup, as it helps ensure customer integrity.Please find the sample consent form details at the link below. 
+
+
+## Recording Upload Details 
+
+To enable call recording storage, please provide details for your preferred storage platform: 
+
+### Option 1: Amazon S3 (AWS)
+
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- S3U_BUCKET_NAME
+- S3U_BUCKET_FOLDER_NAME
+- S3U_AWS_REGION
+
+### Option 2: Google Cloud Storage (GCP) 
+
+- Service account json file
+
+### Option 3: Azure Blob Storage (Microsoft Azure) 
+
+- Container name
+- Storage account name
+- Storage account Key 
+
+### Option 4: Custom / Other Storage Endpoint
+
+If you intend to use a custom storage endpoint please adhere to the following request/ response format:
+
+```
+HTTP Method  
+
+Post
+
+HTTP Request Headers 
+
+File-Name: contains the name of the file. For call recordings, the name will be of the format "<call_uuid>.<wav|mp3>"
+Content-Type: application/octet-stream 
+
+Request Body
+
+The file contents will be sent as binary data in the request body.  
+We can also enable brotli compression for file contents.  
+
+Expected Response
+
+Response Status Code: 200
+Response Body: ok
+Response Content Type: text/plain
+```
+## Business Use Case Details 
+
+- Use Case:
+- Expected Call Volume (Daily/Monthly):
+- Type of Campaign (Inbound / Outbound / Both):
+
+## Go-Live Requirements
+
+- Expected go-live date : 
+
+#### **Compliance & Consent**
+
+- Confirmation that all end-users have provided explicit opt-in consent (Yes/No):
+- Consent Collection Method (e.g., Web Form, CRM, offline forms ):
+
+
+
+---
+
+## Document: /sandbox/compliance
+
+URL: /epicode-docs/sandbox/compliance
+
+
+# Regulatory Compliance Requirement (TRAI Guidelines)
+
+All commercial communications in India are governed by the Telecom Regulatory Authority of India.
+
+## Key Concepts
+
+###  DND
+
+- **DND (Do Not Disturb)** = Customers who have opted out of promotional communication
+
+### Types of Communication
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+| **Type** | **Purpose** | **Target Audience** | **Compliance Requirement** |
+| **Promotional / Telemarketing** | To promote products, services, offers, or brand awareness | Customers who have not blocked promotional calls in DND registry | Consent mandatory; |
+| **Service** | To provide information related to an existing service | All existing customers | **Inferred:** (e.g., post product/service purchase info) – No consent required  **Explicit:** (e.g., ongoing purchase, drop-off etc.) – Consent mandatory  Content must be strictly service-related |
+| **Transactional** | To send critical, real-time information within 30 minutes of the transaction | All customers, including DND-registered | High-priority; must not contain promotional material |
+
+## Use of Designated Number Series
+
+As per applicable regulations issued by the Telecom Regulatory Authority of India (TRAI), all businesses engaging in outbound calling must adhere to the following guidelines to ensure compliance:
+
+- **140-series numbers** must be used for all **telemarketing** or **promotional calls**.
+- **160-series numbers** are designated for **transactional** or **service-related communications**. 
+
+The use of regular phone numbers for such activities is not permitted and may result in regulatory non-compliance.
+
+Please ensure that the appropriate number series is used based on the nature of the call  to remain compliant with regulations.
+
+## Usage in Demo vs Production Environments
+
+### POC / Sandbox Usage
+
+- The platform is strictly for internal testing purposes.
+- No calls should be made to real customers or end users.
+- The platform must not be used for production, promotional, marketing, or support activities.
+- **Please ensure that the numbers being dialed are known/test numbers where the recipients are aware and won’t raise any complaints**.
+
+### Production Usage
+
+- Once moving to production, IraVoice will handle live calls and real users as per your requirements.
+- Approved configurations and integrations may be enabled.
+- You are responsible for ensuring that **all** **call recipients have provided the necessary consent.**
+- If you are using the production setup for running live campaigns, please share the CRM or any relevant screenshots before initiating the calls. 
+
+### TRAI Regulations for 140-Series Numbers
+
+When creating outbound campaigns, it is important to configure campaign working hours in accordance with TRAI (Telecom Regulatory Authority of India) regulations.
+
+140-series numbers are designated for telemarketing purposes and are governed by strict telecom compliance rules enforced by service providers.
+
+#### Allowed Calling Hours
+
+| Day               | Allowed Time Window          |
+| ----------------- | ---------------------------- |
+| Monday – Saturday | 10:00 AM to 7:00 PM          |
+| Sunday            | Outbound calling not allowed |
+
+:::caution
+
+* Inbound calling is not supported on 140-series numbers.
+* Calls attempted outside the permitted time window may be rejected by telecom providers or result in service errors.
+* These restrictions are enforced by telecom operators to ensure compliance with TRAI regulations.
+
+It is recommended to configure campaign working hours accordingly to avoid call failures and regulatory violations.
+:::
+
+
+## Pre-Go-Live Validation
+
+Before initiating production campaigns, customers are required to share:
+
+- Sample consent proofs from the CRM system demonstrating that end users have explicitly opted in to receive outbound calls.
+
+Our team needs to verify that these samples contain the required customer information (like **name, phone number, date**, etc), which we must be able to share with the SIP trunk provider whenever we receive a complaint.
+
+This is necessary to validate readiness and ensure compliance alignment.
+
+## Audit and Complaint Handling 
+
+In the event of a complaint, consent records may need to be shared with the SIP trunk provider or relevant authorities.
+
+:::danger
+### Key Information
+
+- **Response Time**: 2 working days from receiving the audit notice
+- **Required Action**: Provide proof of recipient consent (opt-in)
+- **Consequence of Non-Response**: Number disconnection, temporary or permanent account suspension depending on severity
+:::
+
+### Steps to Take If You Receive an Audit Notice
+
+When Epicode notifies you of a call audit, follow these steps:
+
+1. Verify the audit details: 
+   Epicode will provide:
+  - Your Epicode number (caller)
+  - Recipient’s phone number (callee)
+  - Call Date & Time
+  - Complaint Date & Time
+2. Collect consent evidence: Provide documentation showing the recipient explicitly agreed to receive calls from your organization.
+3. Submit the proof within 2 working  days: Ensure all required information is included (see “Consent Evidence Requirements” below).
+4. Remove the recipient from your calling list: Prevent repeat complaints by ensuring the number is not called again.
+
+:::danger
+**Important**: Using a different Epicode number to contact the same recipient may be treated as a compliance violation and could disrupt your service.
+:::
+
+### Consent Evidence Requirements
+
+Your documentation must clearly demonstrate the recipient agreed to receive calls. Acceptable evidence includes:
+
+- Required Elements:
+  - Company name or logo
+  - Recipient name
+  - Recipient phone number
+  - Date consent was provided
+  - Purpose of consent (marketing/promotional communication)
+  - Mode of consent capture (web form / app / SMS / written form)  
+    
+- Accepted Formats:
+  - CRM screenshots displaying the above details
+  - Signed consent forms
+  - Digital opt-in records
+
+:::warning
+Note: 
+- Screenshot must be unedited and authentic.
+- Submit clear, high-quality images with all elements clearly visible.
+- Excel sheets, PDFs, Word documents, or manually prepared files **will not** be accepted
+:::
+
+### Audit Process
+
+1. A recipient files a complaint with their telecom provider.
+2. The telecom provider identifies Epicode as the originating service.
+3. Epicode’s compliance team identifies the customer responsible.
+4. The customer submits consent evidence within 2 working days.
+5. Epicode reviews the evidence and forwards it to the telecom provider.
+6. The customer is notified once the audit is closed.
+
+## Compliance Responsibility
+
+**TRAI regulations are strictly enforced**. Non-compliance may result in actions including, but not limited to:
+
+- Service restrictions
+- Suspension or termination of SIP trunks
+
+Customers are strongly advised to ensure full adherence to all regulatory requirements at all times.
+
+### Consequences
+
+- If valid evidence is submitted on time:
+  - Epicode reviews the submission and may request additional details if needed.
+  - Once approved, the telecom provider closes the audit, and the customer is notified.
+- If evidence is insufficient:
+  - Epicode will request corrected or additional documentation.
+  - Failure to respond within 2 days can lead to temporary suspension, permanent account blocking, or escalation to TRAI.
+- Multiple complaints:
+  - Repeated violations may result in blacklisting.
+  - For resellers, incorrect compliance mapping may result in action on the entire account.
+
+:::info
+Note: Epicode reserves the right to block traffic, disable numbers, or suspend services in accordance with its Acceptable Use Policy.
+:::
+
+:::tip
+### Best Practices to Avoid Audits
+
+- Call only users who have explicitly opted in.
+- Respect rejections: do not call repeatedly if a recipient declines.
+- Refresh consent every 6 months in compliance with TRAI guidelines.
+:::
+
+
+---
+
+## Document: /sandbox/botcompose
+
+URL: /epicode-docs/sandbox/botcompose
+
+
+# BotCompose Sandbox
+
+BotCompose is a VoiceBot orchestration engine designed to integrate seamlessly with existing PBX, UC, and Contact Center platforms. It replaces rigid IVR flows with natural conversational AI while staying flexible, performant, and vendor-agnostic across STT, TTS, and LLM components..
+
+:::note
+**Base URL:** https://sandboxwa.epicode.in/api/
+:::
+
+:::note
+[Click here](/botcomposeapi) for **Botcompose API documentation**.
+:::
+
+To begin using botcompose from our sandbox environment, you will be provided with below details:
+
+- Tenant Id
+- API credentials (Bearer token:xyz)
+
+These credentials should be used exclusively for testing purposes.
+
+## Steps to create a voice bot using BotCompose
+
+<Stepper>
+1. **Obtain Provider API Keys**: Create accounts with your preferred STT, LLM, and TTS providers and procure the required API credentials.
+2. [**Add Provider Secrets**](/botcomposeapi/add-secret): Add the STT, TTS, and LLM credentials of the model providers you have procured. 
+3. [**Create the Voicebot**](/botcomposeapi/add-bot): Configure and create your voicebot using the required parameters. 
+
+</Stepper>
+
+:::note
+[Click here](/botcompose/create-voicebot) for more information on voicebot creation and available plugins.
+:::
+
+:::tip
+### BotCompose Sample Script
+
+You can also refer to [BotCompose Sample Script](/botcompose/botcomposescript) for testing purposes.
+:::
+
+
+## Testing the Voicebot
+
+Once your voicebot is created and configured, you can validate its performance using an **IraVoice outbound call**.  
+The outbound call will directly connect to the voicebot you’ve built, allowing end-to-end functional testing.
+
+You will be provided with below details over the mail:
+
+- Tenant Id
+- API Credentials (Bearer token: abc)
+- Campaign Name
+- From Number (DID Number)
+
+**Sample CURL request for initiating a MakeCall using a BotCompose-configured voice bot** 
+
+```
+curl --location 'https://sandboxld.epicode.in/api/makecall' \
+ --header 'Content-Type: application/json' \
+ --header 'Authorization: Bearer <Bearer token>' \
+ --data '{  
+    "campaign_name": "<campaign_name>",  
+    "tenant_id": "<tenant_id>",  
+    "from_number": "<from_number>",  
+    "to_number": "<your-number>",  
+    "call_params": {
+
+        "bot_id": "<unique-name-of-your-voicebot>",  
+        "call_type":"botcompose",
+
+        "streaming_useraudio": false,  
+        "event_url" : "<your-http-endpoint>"  
+    }  
+}'
+```
+:::note
+[Click here](/api) for **IraVoice API documentation**.
+:::
+
+- API request endpoint for integration testing : https://sandboxld.epicode.in/api/makecall 
+- For more details on [**Make Call request parameters**](/api/makecall-make-outbound-call)
+- To connect to the newly created **voicebot**, you must specify the following **within** **call_params**:   
+  - Include "**bot_id**" : "**unique-name-of-your-voicebot**" which was created using BotCompose APIs.
+  - Remove the fields **websocket_host**, **websocket_port** and **websocket_app** and use  "**call_type**":"**botcompose**" field instead.
+  - Set "**streaming_useraudio**": **false** if you are using **Non-streaming STT**.
+- Should you require access to CDR transcripts from BotCompose, Call Recordings, or the Live Call Monitor, please let us know.
+
+
+:::tip
+### Frequently Asked questions
+
+For common doubts and queries with BotCompose please refer to [BotCompose FAQ's](https://epicode.in/botcompose#FAQs).
+:::
+
+
+
+
+
+---
+
+## Document: /botcompose/create-voicebot
+
+URL: /epicode-docs/botcompose/create-voicebot
+
+
+# Creating A Voicebot
+
+BotCompose provides built-in plugins for integrating with Speech-to-Text (STT), Large Language Models (LLMs), and Text-to-Speech (TTS) providers when creating voicebots through the API.
+
+> **Last Updated:** 19 January 2025
+
+![](/epicode-docs/botcompose.png)
+
+
+
+Before creating a voicebot, you must obtain credentials from the AI providers you intend to use and register those credentials with BotCompose.
+
+
+<Stepper>
+
+1. ## Obtain Provider API Keys
+
+    Create accounts with your preferred STT, LLM, and TTS providers and procure the required API credentials.
+
+    A typical voicebot requires:
+
+    * One or more **STT provider** for Speech-to-Text
+    * One or more **LLM provider** for conversational intelligence
+    * One or more **TTS provider** for Text-to-Speech
+
+2. ## Add Provider Credentials
+
+    Once you have obtained the required API keys, add them to the BotCompose secrets inventory using the `/add_secret` API endpoint.
+
+    Secrets stored in the inventory can be securely referenced during bot creation without exposing provider credentials in your bot configuration.
+
+    :::note
+    For more information, refer to the [**Add Secret API Reference**](/botcomposeapi/add-secret).
+    :::
+
+
+3. ## Create the Voicebot
+
+    After adding the required secrets, create and configure your voicebot using the `/add_bot` API endpoint.
+
+    Within the bot configuration payload, specify:
+
+    * The STT plugin to use
+    * The LLM plugin to use
+    * The TTS plugin to use
+    * References(secret_name) to the secrets added in the previous step
+    * Any provider-specific configuration such as models, voices, languages, or endpoint URLs
+
+    :::note
+    For detailed information on supported configuration fields and payload examples, refer to the [**Add Bot API Reference**](/botcomposeapi/add-bot).
+    :::
+
+4. ## Configure Tool Calling
+
+    BotCompose supports tool calling, allowing your voicebot to invoke external APIs, perform actions, fetch data, and execute business workflows during conversations.
+
+    Tool definitions can be configured in one of two ways:
+
+    ### Option 1: Configure During Bot Creation
+
+    Tool calling configuration can be included directly within the `/add_bot` request payload when creating the voicebot.
+
+    This approach is recommended when the tool definitions are known during bot setup and should remain tightly coupled with the bot configuration.
+
+    ### Option 2: Configure Separately
+
+    Tool definitions can also be managed independently using the `/tool_call_payload` API endpoint.
+
+    This approach is useful when:
+
+    * Tool definitions need to be updated without recreating the bot
+    * Multiple bots share the same tools
+    * Tool configurations are managed dynamically by external systems
+
+    :::note
+    For detailed information on tool definitions, supported payload formats, execution flow, and examples, refer to the [**Tool Calling API**](/botcomposeapi/tool-calling).
+    :::
+
+5. ## Configure TTS Response Cache
+
+   BotCompose supports pre-generating and caching TTS audio for frequently used bot responses. 
+   This helps reduce response latency by serving pre-generated audio instead of synthesizing speech during the call.
+
+   Common use cases include:
+
+   * Greetings and welcome messages
+   * Compliance disclosures
+   * Hold messages
+   * Frequently repeated prompts
+   * Closing statements
+
+   TTS cache entries can be configured in one of two ways:
+
+   ### Option 1: Configure During Bot Creation
+
+   TTS cache definitions can be included directly within the `/add_bot` request payload when creating the voicebot.
+
+   This approach is recommended when the cached responses are known during bot setup and should be deployed alongside the bot configuration.
+
+   ### Option 2: Configure Separately
+
+   TTS cache entries can also be added or updated independently using the `/populate_tts_cache` API endpoint.
+
+   This approach is useful when:
+
+   * New cached responses need to be added after deployment
+   * Existing cached phrases need to be updated
+   * Multiple bots share common pre-generated responses
+   * Cache content is managed dynamically by external systems
+
+   When a cached response is available, BotCompose can serve the pre-generated audio directly, reducing TTS generation overhead and improving response times.
+
+    :::note
+    For detailed information on payload formats, supported configuration options, and examples, refer to the [**Populate TTS Cache API**](/botcomposeapi/populate-tts-cache).
+    :::
+
+</Stepper>
+---
+
+## Speech-to-Text (STT) Plugins
+
+The following STT plugins are available for converting user speech into text:
+
+| Plugin Name          | Description                       |
+| -------------------- | --------------------------------- |
+| `deepgram`           | Deepgram Speech-to-Text           |
+| `deepgram_streaming` | Deepgram Streaming Speech-to-Text |
+| `sarvam`             | Sarvam AI Speech-to-Text          |
+| `azure`              | Microsoft Azure Speech Services   |
+| `google`             | Google Speech-to-Text             |
+
+
+
+## Text-to-Speech (TTS) Plugins
+
+The following TTS plugins are available for converting bot responses into speech:
+
+| Plugin Name  | Description                     |
+| ------------ | ------------------------------- |
+| `elevenlabs` | ElevenLabs Text-to-Speech       |
+| `openai`     | OpenAI Text-to-Speech           |
+| `google`     | Google Cloud Text-to-Speech     |
+| `azure`      | Microsoft Azure Speech Services |
+| `sarvam`     | Sarvam AI Text-to-Speech        |
+| `Smallestai` | Smallest AI Text-to-Speech      |
+| `Cartesia`   | Cartesia Text-to-Speech         |
+
+
+
+## Large Language Model (LLM) Plugins
+
+### `openai_like`
+
+The `openai_like` plugin provides a unified interface for integrating with OpenAI-compatible APIs.
+
+To use a supported provider, configure the appropriate `base_url` in the plugin configuration.
+
+### Supported Providers
+
+| Provider                        | Supported |
+| ------------------------------- | --------- |
+| OpenAI                          | ✅         |
+| Azure OpenAI / Azure AI Foundry | ✅         |
+| Groq                            | ✅         |
+| Fireworks.ai                    | ✅         |
+| Hugging Face Inference Router   | ✅         |
+| Vercel AI Gateway               | ✅         |
+
+
+
 
 
 ---
