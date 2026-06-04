@@ -188,6 +188,7 @@ Sales
               "to": "/botcomposeapi",
               "icon": "cog"
             },
+            "/botcompose/create-voicebot",
             "/botcompose/botcomposescript",
             "/botcompose/botlatency",
           ],

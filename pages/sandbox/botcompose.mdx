@@ -20,11 +20,15 @@ These credentials should be used exclusively for testing purposes.
 ## Steps to create a voice bot using BotCompose
 
 <Stepper>
-1. [**Add Provider Secrets**](/botcomposeapi/add-secret): Add the STT, TTS, and LLM credentials of the model providers you have procured. 
-2. [**Create the Voicebot**](/botcomposeapi/add-bot): Configure and create your voicebot using the required parameters. 
+1. **Obtain Provider API Keys**: Create accounts with your preferred STT, LLM, and TTS providers and procure the required API credentials.
+2. [**Add Provider Secrets**](/botcomposeapi/add-secret): Add the STT, TTS, and LLM credentials of the model providers you have procured. 
+3. [**Create the Voicebot**](/botcomposeapi/add-bot): Configure and create your voicebot using the required parameters. 
 
 </Stepper>
 
+:::note
+[Click here](/botcompose/create-voicebot) for more information on voicebot creation and available plugins.
+:::
 
 :::tip
 ### BotCompose Sample Script
