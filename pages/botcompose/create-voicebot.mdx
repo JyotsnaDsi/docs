@@ -1,6 +1,16 @@
-# Creating A Voicebot
+# Creating a Voicebot
 
-BotCompose provides built-in plugins for integrating with Speech-to-Text (STT), Large Language Models (LLMs), and Text-to-Speech (TTS) providers when creating voicebots through the API.
+BotCompose enables you to build and launch AI-powered voicebots by integrating your preferred Speech-to-Text (STT), Large Language Model (LLM), and Text-to-Speech (TTS) providers.
+
+The voicebot creation process involves:
+
+* Procuring API credentials from your preferred AI providers
+* Securely storing provider credentials using the `/add_secret` API
+* Creating and configuring the voicebot using the `/add_bot` API
+* Optionally enabling tool calling for external integrations and workflow automation
+* Optionally pre-generating and caching TTS responses to reduce response latency
+
+BotCompose provides built-in plugins for several STT, LLM, and TTS providers, allowing you to mix and match services based on your use case, performance requirements, and pricing preferences.
 
 > **Last Updated:** 19 January 2025
 
