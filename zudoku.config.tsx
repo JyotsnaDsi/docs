@@ -240,34 +240,43 @@ Sales
               "file": "/iravoice/web-monitor",
               "icon": "monitor",
             },
+            {
+              type: "category",
+              label: "Voice AI Integrations",
+              icon: "blocks",
+              collapsible: false,
+              items: [
+                {
+                  "type": "doc",
+                  "label": "Livekit",
+                  "file":  "/iravoice/livekit-integration",
+                  "icon": "puzzle",
+                },
+                {
+                  "type": "doc",
+                  "label": "Vapi",
+                  "file":  "/iravoice/vapi-integration",
+                  "icon": "puzzle",
+                },
+              ],
+            },
+            {
+              type: "category",
+              label: "Voice Channels",
+              icon: "antenna",
+              collapsible: false,
+              items: [
+                {
+                  "type": "doc",
+                  "label": "WhatsApp Calling",
+                  "file":  "/iravoice/whatsapp-calling",
+                  "icon": "message-circle-dashed",
+                },
+              ],
+            },
           ],
         },
-        {
-          type: "category",
-          label: "IraVoice Integrations",
-          icon: "blocks",
-          collapsible: false,
-          items: [
-            {
-              "type": "doc",
-              "label": "WhatsApp Calling",
-              "file":  "/iravoice/whatsapp-calling",
-              "icon": "message-circle-dashed",
-            },
-            {
-              "type": "doc",
-              "label": "Livekit",
-              "file":  "/iravoice/livekit-integration",
-              "icon": "puzzle",
-            },
-            {
-              "type": "doc",
-              "label": "Vapi",
-              "file":  "/iravoice/vapi-integration",
-              "icon": "puzzle",
-            },
-          ],
-        },
+        
         // {
         //   type: "category",
         //   label: "BotCompose - Orchestration",
