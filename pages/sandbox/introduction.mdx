@@ -51,16 +51,13 @@ The guide is intended to ensure a smooth onboarding experience and to enable eff
 :::
 
 :::note
-[**Get Started With BotCompose**](/sandbox/botcompose)
-:::
-
-:::note
-[**Regulatory Compliances**](/sandbox/compliance)
-:::
-
-:::note
 [**Customer Information**](/sandbox/customerinfo)
 :::
+
+:::note
+[**Compliance & Regulations**](/sandbox/compliance)
+:::
+
 
 ![](/api/files/019e1658-db77-7786-817c-6bf9b6b0724f/iravoice.png)
 
