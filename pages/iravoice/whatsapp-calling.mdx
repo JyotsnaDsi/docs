@@ -121,7 +121,7 @@ Business-initiated calls are calls placed by your business to a WhatsApp user.
 
 ### Requirements
 
-* The user must have granted calling permission to the business.
+* Ensure that the user has granted calling permission to the business.
 * The account owner must retrieve the Meta-generated SIP password.
 
 To enable Outbound WhatsApp Calls via IraVoice, Epicode team will configure the SIP password on the SIP server to respond to Meta's digest authentication challenges.
