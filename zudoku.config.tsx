@@ -188,6 +188,12 @@ Sales
             },
             {
               "type": "doc",
+              "label": "Dialing Overview",
+              "file": "/iravoice/overview",
+              "icon": "eye",
+            },
+            {
+              "type": "doc",
               "label": "Websocket Message Model",
               "file": "/iravoice/websocket-message-model",
               "icon": "code",
@@ -206,12 +212,6 @@ Sales
             },
             {
               "type": "doc",
-              "label": "Campaign Manager",
-              "file": "/iravoice/campaign-manager",
-              "icon": "monitor-cog",
-            },
-            {
-              "type": "doc",
               "label": "Latency Monitoring",
               "file": "/iravoice/call-latency",
               "icon": "square-activity",
@@ -221,6 +221,18 @@ Sales
               "label": "Benchmarks",
               "file": "/iravoice/benchmarks",
               "icon": "gauge",
+            },
+            {
+              "type": "doc",
+              "label": "Call Dispositions",
+              "file": "/iravoice/call-dispositions",
+              "icon": "message-circle-warning",
+            },
+            {
+              "type": "doc",
+              "label": "Campaign Manager",
+              "file": "/iravoice/campaign-manager",
+              "icon": "monitor-cog",
             },
             {
               "type": "doc",
@@ -236,6 +248,12 @@ Sales
           icon: "blocks",
           collapsible: false,
           items: [
+            {
+              "type": "doc",
+              "label": "WhatsApp Calling",
+              "file":  "/iravoice/whatsapp-calling",
+              "icon": "message-circle-dashed",
+            },
             {
               "type": "doc",
               "label": "Livekit",
