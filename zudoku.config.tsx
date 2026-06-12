@@ -149,7 +149,7 @@ Sales
           items: [
             "/sandbox/introduction",
             "/sandbox/iravoice",
-            "/sandbox/botcompose",
+            // "/sandbox/botcompose",
             "/sandbox/customerinfo",
             "/sandbox/compliance",
           ],
@@ -171,28 +171,29 @@ Sales
             "iravoice/bridge-call-to-agent",
             "/iravoice/campaign-manager",
             "/iravoice/call-latency",
+            "/iravoice/benchmarks",
             "/iravoice/web-monitor",
             "/iravoice/livekit-integration",
             "/iravoice/vapi-integration",
           ],
         },
-        {
-          type: "category",
-          label: "BotCompose - Orchestration",
-          icon: "box",
-          collapsible: false,
-          items: [
-            {
-              "type": "link",
-              "label": "BotCompose API",
-              "to": "/botcomposeapi",
-              "icon": "cog"
-            },
-            "/botcompose/create-voicebot",
-            "/botcompose/botcomposescript",
-            "/botcompose/botlatency",
-          ],
-        },
+        // {
+        //   type: "category",
+        //   label: "BotCompose - Orchestration",
+        //   icon: "box",
+        //   collapsible: false,
+        //   items: [
+        //     {
+        //       "type": "link",
+        //       "label": "BotCompose API",
+        //       "to": "/botcomposeapi",
+        //       "icon": "cog"
+        //     },
+        //     "/botcompose/create-voicebot",
+        //     "/botcompose/botcomposescript",
+        //     "/botcompose/botlatency",
+        //   ],
+        // },
       ],
     },
     {
@@ -200,11 +201,11 @@ Sales
       to: "/api",
       label: "IraVoice API Reference",
     },
-    {
-      type: "link",
-      to: "/botcomposeapi",
-      label: "BotCompose API Reference",
-    },
+    // {
+    //   type: "link",
+    //   to: "/botcomposeapi",
+    //   label: "BotCompose API Reference",
+    // },
   ],
   redirects: [{ from: "/", to: "/sandbox/introduction" }],
   apis: [
@@ -216,14 +217,14 @@ Sales
         expandAllTags: false,
       }
     },
-    {
-      type: "file",
-      input: "./apis/botcompose.json",
-      path: "/botcomposeapi",
-      options: {
-        expandAllTags: false,
-      }
-    },
+    // {
+    //   type: "file",
+    //   input: "./apis/botcompose.json",
+    //   path: "/botcomposeapi",
+    //   options: {
+    //     expandAllTags: false,
+    //   }
+    // },
   ],
   docs: {
     files: "pages/**/*.{md,mdx}", // Your markdown files
