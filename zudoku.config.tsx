@@ -244,7 +244,7 @@ Sales
               type: "category",
               label: "Voice AI Integrations",
               icon: "blocks",
-              collapsible: false,
+              collapsible: true,
               items: [
                 {
                   "type": "doc",
@@ -264,7 +264,7 @@ Sales
               type: "category",
               label: "Voice Channels",
               icon: "antenna",
-              collapsible: false,
+              collapsible: true,
               items: [
                 {
                   "type": "doc",
