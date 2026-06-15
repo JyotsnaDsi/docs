@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://sandboxld.epicode.in/api/",
+      "url": "https://sandboxld.epicode.in/",
       "description": "IraVoice API Server"
     }
   ],
