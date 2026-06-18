@@ -70,14 +70,6 @@ Enable and configure SIP on the business phone number.
 https://developers.facebook.com/docs/whatsapp/cloud-api/calling/sip#configure-update-sip-settings-on-business-phone-number
 :::
 
-:::note
-### Important Notes
-
-* Generate a Bearer Token using the Permanent Access Token method.
-* Assign a hostname to the FreeSWITCH server and install a valid SSL certificate.
-* TLS support must be enabled in FreeSWITCH.
-* All fields in the API request are mandatory.
-:::
 
 ### Example API Request
 
@@ -96,8 +88,8 @@ curl 'https://graph.facebook.com/v23.0/<Unique-ID-of-the-Registered-Number>/sett
       "status":"ENABLED",
       "servers":[
         {
-          "hostname":"wacall.epicode.in",
-          "port":5061
+          "hostname":"<iravoice-server-host>",
+          "port":<some-port>
         }
       ]
     }
