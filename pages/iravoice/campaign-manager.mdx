@@ -4,11 +4,11 @@ The IraVoice Campaign Manager enables developers and administrators to create, c
 
 Campaigns can be configured for different dialing strategies and activated to handle large-scale outbound calling operations efficiently.
 
-![](/epicode-docs/campaign-mgr.png)
+![](/docs/campaign-mgr.png)
 
 ## Campaign Configuration Parameters
 
-![](/epicode-docs/create-cmpn.png)
+![](/docs/create-cmpn.png)
 
 When creating a campaign, the following parameters must be configured:
 
