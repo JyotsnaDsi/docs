@@ -229,16 +229,30 @@ Sales
               "icon": "message-circle-warning",
             },
             {
-              "type": "doc",
-              "label": "Campaign Manager",
-              "file": "/iravoice/campaign-manager",
-              "icon": "monitor-cog",
-            },
-            {
-              "type": "doc",
-              "label": "Web Monitor",
-              "file": "/iravoice/web-monitor",
-              "icon": "monitor",
+              type: "category",
+              label: "Monitoring Tools",
+              icon: "layout-grid",
+              collapsible: true,
+              items: [
+                {
+                  "type": "doc",
+                  "label": "Campaign Manager",
+                  "file": "/iravoice/campaign-manager",
+                  "icon": "monitor-cog",
+                },
+                {
+                  "type": "doc",
+                  "label": "Web Monitor",
+                  "file": "/iravoice/web-monitor",
+                  "icon": "monitor",
+                },
+                {
+                  "type": "doc",
+                  "label": "Server Monitor",
+                  "file": "/iravoice/server-spec",
+                  "icon": "server",
+                },
+              ],
             },
             {
               type: "category",
