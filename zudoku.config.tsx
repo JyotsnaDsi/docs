@@ -230,7 +230,7 @@ Sales
             },
             {
               type: "category",
-              label: "Monitoring Tools",
+              label: "Tools",
               icon: "layout-grid",
               collapsible: true,
               items: [
