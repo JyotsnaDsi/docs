@@ -14,7 +14,7 @@ BotCompose provides built-in plugins for several STT, LLM, and TTS providers, al
 
 > **Last Updated:** 19 January 2025
 
-![](/epicode-docs/botcompose.png)
+![](/docs/botcompose.png)
 
 
 
