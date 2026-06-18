@@ -4,7 +4,7 @@ Epicode provides a server utilization monitoring dashboard that enables real-tim
 
 For deployments handling large call volumes or running on dedicated infrastructure, the Epicode team can provide access to this monitoring platform. The dashboard helps customers track server health, resource consumption, and overall system performance to ensure optimal operation.
 
-![](/docs/server-spec.png)
+![](/epicode-docs/server-spec.png)
 
 The monitoring dashboard includes:
 
