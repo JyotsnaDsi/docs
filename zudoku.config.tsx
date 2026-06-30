@@ -1,7 +1,7 @@
 import type { ZudokuConfig } from "zudoku";
 
 const config: ZudokuConfig = {
-  basePath: "/epicode-docs",
+  basePath: "/docs",
   "metadata": {
     "title": "Epicode Docs",
     "description": "Dumentation for the Epicode Product Suite.",

@@ -39,10 +39,10 @@ jobs:
         run: npm run build
 
       - name: No Jekyll
-        run:  touch dist/epicode-docs/.nojekyll
+        run:  touch dist/docs/.nojekyll
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./dist/epicode-docs/
+          folder: ./dist/docs/
 
