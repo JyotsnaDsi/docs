@@ -7,7 +7,7 @@
 
 ## Document: /sandbox/iravoice
 
-URL: /epicode-docs/sandbox/iravoice
+URL: /docs/sandbox/iravoice
 
 
 
@@ -108,7 +108,7 @@ For common doubts and queries with IraVoice please refer  to [IraVoice FAQ's](h
 
 ## Document: /sandbox/introduction
 
-URL: /epicode-docs/sandbox/introduction
+URL: /docs/sandbox/introduction
 
 
 # Introduction
@@ -184,7 +184,7 @@ The guide is intended to ensure a smooth onboarding experience and to enable eff
 
 ## Document: /sandbox/customerinfo
 
-URL: /epicode-docs/sandbox/customerinfo
+URL: /docs/sandbox/customerinfo
 
 
 # Customer Information & Required Details
@@ -282,7 +282,7 @@ Response Content Type: text/plain
 
 ## Document: /sandbox/compliance
 
-URL: /epicode-docs/sandbox/compliance
+URL: /docs/sandbox/compliance
 
 
 # Regulatory Compliance Requirement (TRAI Guidelines)
@@ -465,7 +465,7 @@ Note: Epicode reserves the right to block traffic, disable numbers, or suspend s
 
 ## Document: /sandbox/botcompose
 
-URL: /epicode-docs/sandbox/botcompose
+URL: /docs/sandbox/botcompose
 
 
 # BotCompose Sandbox
@@ -567,7 +567,7 @@ For common doubts and queries with BotCompose please refer to [BotCompose FAQ's]
 
 ## Document: /iravoice/whatsapp-calling
 
-URL: /epicode-docs/iravoice/whatsapp-calling
+URL: /docs/iravoice/whatsapp-calling
 
 
 # WhatsApp Business Calling API Integration
@@ -714,7 +714,7 @@ https://developers.facebook.com/docs/whatsapp/cloud-api/calling/sip
 
 ## Document: /iravoice/websocket-message-model
 
-URL: /epicode-docs/iravoice/websocket-message-model
+URL: /docs/iravoice/websocket-message-model
 
 
 # WebSocket Message Model
@@ -977,7 +977,7 @@ This structure ensures predictable framing, low-latency streaming, and compatibi
 
 ## Document: /iravoice/webhook-event
 
-URL: /epicode-docs/iravoice/webhook-event
+URL: /docs/iravoice/webhook-event
 
 
 # Webhook Event URL Payload
@@ -1179,7 +1179,7 @@ If `event_url` is present in the `call_params` of the `makecall` or `makecalldir
 
 ## Document: /iravoice/web-monitor
 
-URL: /epicode-docs/iravoice/web-monitor
+URL: /docs/iravoice/web-monitor
 
 
 # Web Monitor
@@ -1347,7 +1347,7 @@ The licenses section shows license consumption per tenant, for tracking usage ag
 
 ## Document: /iravoice/vapi-integration
 
-URL: /epicode-docs/iravoice/vapi-integration
+URL: /docs/iravoice/vapi-integration
 
 
 # Vapi-IraVoice Integration 
@@ -1486,7 +1486,7 @@ Example Response:
 
 ## Document: /iravoice/server-spec
 
-URL: /epicode-docs/iravoice/server-spec
+URL: /docs/iravoice/server-spec
 
 
 # Server Utilization Monitoring
@@ -1516,7 +1516,7 @@ This visibility helps teams identify resource bottlenecks, monitor infrastructur
 
 ## Document: /iravoice/overview
 
-URL: /epicode-docs/iravoice/overview
+URL: /docs/iravoice/overview
 
 
 # Outbound Campaign Capacity and Dialing Overview
@@ -1612,7 +1612,7 @@ Organizations should ensure that the appropriate numbering series is used based 
 
 ## Document: /iravoice/livekit-integration
 
-URL: /epicode-docs/iravoice/livekit-integration
+URL: /docs/iravoice/livekit-integration
 
 
 # LiveKit–IraVoice Integration
@@ -1968,7 +1968,7 @@ For SIP credentials, routing configuration, recording setup, webhook integration
 
 ## Document: /iravoice/campaign-manager
 
-URL: /epicode-docs/iravoice/campaign-manager
+URL: /docs/iravoice/campaign-manager
 
 
 # Campaign Manager
@@ -2065,7 +2065,7 @@ The Campaign Manager dynamically distributes outbound traffic across configured 
 
 ## Document: /iravoice/call-latency
 
-URL: /epicode-docs/iravoice/call-latency
+URL: /docs/iravoice/call-latency
 
 
 # Call Latency Monitoring
@@ -2135,7 +2135,7 @@ Unlike the dashboard, which shows averaged metrics across calls, the `stream_sto
 
 ## Document: /iravoice/call-dispositions
 
-URL: /epicode-docs/iravoice/call-dispositions
+URL: /docs/iravoice/call-dispositions
 
 
 # SIP Response Codes and Call Disposition Reference Guide
@@ -2164,7 +2164,7 @@ Use this reference to quickly understand call outcomes and troubleshoot call fai
 
 ## Document: /iravoice/bridge-call-to-agent
 
-URL: /epicode-docs/iravoice/bridge-call-to-agent
+URL: /docs/iravoice/bridge-call-to-agent
 
 
 # Bridge Call to Agent
@@ -2382,7 +2382,7 @@ During both transfer flows, the following events are commonly used:
 
 ## Document: /iravoice/benchmarks
 
-URL: /epicode-docs/iravoice/benchmarks
+URL: /docs/iravoice/benchmarks
 
 
 # Performance benchmarks
@@ -2478,7 +2478,7 @@ This configuration is designated as the strategic standard for the following rea
 
 ## Document: /botcompose/create-voicebot
 
-URL: /epicode-docs/botcompose/create-voicebot
+URL: /docs/botcompose/create-voicebot
 
 
 # Creating a Voicebot
@@ -2667,7 +2667,7 @@ To use a supported provider, configure the appropriate `base_url` in the plugin 
 
 ## Document: /botcompose/botlatency
 
-URL: /epicode-docs/botcompose/botlatency
+URL: /docs/botcompose/botlatency
 
 
 # VoiceBot Latency Monitoring
@@ -2737,7 +2737,7 @@ These metrics help identify whether latency originates from:
 
 ## Document: /botcompose/botcomposescript
 
-URL: /epicode-docs/botcompose/botcomposescript
+URL: /docs/botcompose/botcomposescript
 
 
 # BotCompose Sample Script
