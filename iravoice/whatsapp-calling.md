@@ -88,8 +88,8 @@ curl 'https://graph.facebook.com/v23.0/<Unique-ID-of-the-Registered-Number>/sett
       "status":"ENABLED",
       "servers":[
         {
-          "hostname":"<iravoice-server-host>",
-          "port":<some-port>
+          "hostname":"<iravoice-host>",
+          "port":<iravoice-port>
         }
       ]
     }

@@ -211,8 +211,7 @@ Please provide the following details for the authorized signatory. This informat
 Fill the following form to proceed : [<span style={{"color":"#b85cfa"}}> **==Authorized Signatory Details==** </span>](https://iravoice.epicode.in/signup/)
 :::
 
-Signing the consent form is mandatory to proceed with the setup, as it helps ensure customer integrity.Please find the sample consent form details at the link below. 
-
+Signing the consent form is mandatory to proceed with the setup, as it helps ensure customer integrity.
 
 ## Recording Upload Details 
 
@@ -263,18 +262,18 @@ Response Content Type: text/plain
 ```
 ## Business Use Case Details 
 
-- Use Case:
-- Expected Call Volume (Daily/Monthly):
-- Type of Campaign (Inbound / Outbound / Both):
+- Use Case
+- Expected Call Volume (Daily/Monthly)
+- Type of Campaign (Inbound / Outbound / Both)
 
 ## Go-Live Requirements
 
-- Expected go-live date : 
+- Expected go-live date 
 
 #### **Compliance & Consent**
 
-- Confirmation that all end-users have provided explicit opt-in consent (Yes/No):
-- Consent Collection Method (e.g., Web Form, CRM, offline forms ):
+- Confirmation that all end-users have provided explicit opt-in consent (Yes/No)
+- Consent Collection Method (e.g., Web Form, CRM, offline forms )
 
 
 
@@ -660,8 +659,8 @@ curl 'https://graph.facebook.com/v23.0/<Unique-ID-of-the-Registered-Number>/sett
       "status":"ENABLED",
       "servers":[
         {
-          "hostname":"<iravoice-server-host>",
-          "port":<some-port>
+          "hostname":"<iravoice-host>",
+          "port":<iravoice-port>
         }
       ]
     }
@@ -1188,7 +1187,7 @@ The IraVoice web monitor provides realtime visibility into outbound campaign act
 
 The platform also includes a scheduler component that manages call queuing, distributes load across dialers, and supports configurations such as CPS limits and dial timeouts. Working hours can be configured globally and can also be defined during campaign creation for more granular control.
 
-![](/epicode-docs/web-monitor.png)
+![](/docs/web-monitor.png)
 
 ## Campaigns/logical gateways
 
@@ -1268,7 +1267,7 @@ When errors occur on the websocket server, this column displays the count of cal
 
 ### Types of Web Errors
 
-![](/epicode-docs/weberr.png)
+![](/docs/weberr.png)
 
 Hover over the Web Errors column to view the error breakdown.
 
@@ -1369,31 +1368,25 @@ When a call is answered, IraVoice requests a dynamically generated WebSocket URL
 5. Your application returns this WSS URL in the HTTP response.
 6. IraVoice connects to the returned WebSocket endpoint and begins streaming audio between the caller and the Vapi voicebot.
 
-```text
-Caller
-   │
-   ▼
-IraVoice
-   │
-   │ POST Request
-   ▼
-Customer Endpoint
-   │
-   │ Create Vapi WebSocket Session
-   ▼
-Vapi
-   │
-   │ Returns Dynamic WSS URL
-   ▼
-Customer Endpoint
-   │
-   │ Returns WSS URL
-   ▼
-IraVoice
-   │
-   ▼
-Vapi Voicebot
-```
+
+
+<Mermaid
+  chart={`
+    sequenceDiagram
+      participant Caller
+      participant IraVoice
+      participant CE as Customer Endpoint
+      participant Vapi
+      participant Bot as Vapi Voicebot
+
+      Caller->>IraVoice: Incoming Call
+      IraVoice->>CE: POST Request
+      CE->>Vapi: Create WebSocket Session
+      Vapi-->>CE: Dynamic WSS URL
+      CE-->>IraVoice: Return WSS URL
+      IraVoice->>Bot: Connect to WSS URL
+  `}
+/>
 
 ---
 
@@ -1495,7 +1488,7 @@ Epicode provides a server utilization monitoring dashboard that enables real-tim
 
 For deployments handling large call volumes or running on dedicated infrastructure, the Epicode team will provide access to this monitoring platform. The dashboard helps customers track server health, resource consumption, and overall system performance to ensure optimal operation.
 
-![](/epicode-docs/server-spec.png)
+![](/docs/server-spec.png)
 
 The monitoring dashboard includes:
 
@@ -1624,33 +1617,30 @@ This guide explains how to enable inbound and outbound PSTN calling between Live
 
 ## Architecture Overview
 
-![](/epicode-docs/IraVoice-livekit.png)
+![](/docs/IraVoice-livekit.png)
 
 ### Outbound Call Flow
 
-```text
-LiveKit Room
-      ↓
-   IraVoice
-      ↓
-PSTN Provider (Airtel, etc.)
-      ↓
- Phone User
-```
+<Mermaid
+  chart={`
+    flowchart LR
+      A[LiveKit Room] --> B[IraVoice]
+      B --> C[PSTN Provider]
+      C --> D[Phone User]
+  `}
+/>
+
 
 ### Inbound Call Flow
 
-```text
-Phone User
-      ↓
-PSTN Provider
-      ↓
-   IraVoice
-      ↓
- LiveKit Room
-```
-
-
+<Mermaid
+  chart={`
+    flowchart LR
+      A[Phone User] --> B[PSTN Provider]
+      B --> C[IraVoice]
+      C --> D[LiveKit Room]
+  `}
+/>
 
 ## SIP Configuration
 
@@ -1977,11 +1967,11 @@ The IraVoice Campaign Manager enables developers and administrators to create, c
 
 Campaigns can be configured for different dialing strategies and activated to handle large-scale outbound calling operations efficiently.
 
-![](/epicode-docs/campaign-mgr.png)
+![](/docs/campaign-mgr.png)
 
 ## Campaign Configuration Parameters
 
-![](/epicode-docs/create-cmpn.png)
+![](/docs/create-cmpn.png)
 
 When creating a campaign, the following parameters must be configured:
 
@@ -2497,7 +2487,7 @@ BotCompose provides built-in plugins for several STT, LLM, and TTS providers, al
 
 > **Last Updated:** 19 January 2025
 
-![](/epicode-docs/botcompose.png)
+![](/docs/botcompose.png)
 
 
 

@@ -17,31 +17,25 @@ When a call is answered, IraVoice requests a dynamically generated WebSocket URL
 5. Your application returns this WSS URL in the HTTP response.
 6. IraVoice connects to the returned WebSocket endpoint and begins streaming audio between the caller and the Vapi voicebot.
 
-```text
-Caller
-   │
-   ▼
-IraVoice
-   │
-   │ POST Request
-   ▼
-Customer Endpoint
-   │
-   │ Create Vapi WebSocket Session
-   ▼
-Vapi
-   │
-   │ Returns Dynamic WSS URL
-   ▼
-Customer Endpoint
-   │
-   │ Returns WSS URL
-   ▼
-IraVoice
-   │
-   ▼
-Vapi Voicebot
-```
+
+
+<Mermaid
+  chart={`
+    sequenceDiagram
+      participant Caller
+      participant IraVoice
+      participant CE as Customer Endpoint
+      participant Vapi
+      participant Bot as Vapi Voicebot
+
+      Caller->>IraVoice: Incoming Call
+      IraVoice->>CE: POST Request
+      CE->>Vapi: Create WebSocket Session
+      Vapi-->>CE: Dynamic WSS URL
+      CE-->>IraVoice: Return WSS URL
+      IraVoice->>Bot: Connect to WSS URL
+  `}
+/>
 
 ---
 

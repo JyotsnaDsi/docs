@@ -7,33 +7,30 @@ This guide explains how to enable inbound and outbound PSTN calling between Live
 
 ## Architecture Overview
 
-![](/epicode-docs/IraVoice-livekit.png)
+![](/docs/IraVoice-livekit.png)
 
 ### Outbound Call Flow
 
-```text
-LiveKit Room
-      ↓
-   IraVoice
-      ↓
-PSTN Provider (Airtel, etc.)
-      ↓
- Phone User
-```
+<Mermaid
+  chart={`
+    flowchart LR
+      A[LiveKit Room] --> B[IraVoice]
+      B --> C[PSTN Provider]
+      C --> D[Phone User]
+  `}
+/>
+
 
 ### Inbound Call Flow
 
-```text
-Phone User
-      ↓
-PSTN Provider
-      ↓
-   IraVoice
-      ↓
- LiveKit Room
-```
-
-
+<Mermaid
+  chart={`
+    flowchart LR
+      A[Phone User] --> B[PSTN Provider]
+      B --> C[IraVoice]
+      C --> D[LiveKit Room]
+  `}
+/>
 
 ## SIP Configuration
 

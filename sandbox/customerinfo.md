@@ -22,8 +22,7 @@ Please provide the following details for the authorized signatory. This informat
 Fill the following form to proceed : [<span style={{"color":"#b85cfa"}}> **==Authorized Signatory Details==** </span>](https://iravoice.epicode.in/signup/)
 :::
 
-Signing the consent form is mandatory to proceed with the setup, as it helps ensure customer integrity.Please find the sample consent form details at the link below. 
-
+Signing the consent form is mandatory to proceed with the setup, as it helps ensure customer integrity.
 
 ## Recording Upload Details 
 
@@ -74,15 +73,15 @@ Response Content Type: text/plain
 ```
 ## Business Use Case Details 
 
-- Use Case:
-- Expected Call Volume (Daily/Monthly):
-- Type of Campaign (Inbound / Outbound / Both):
+- Use Case
+- Expected Call Volume (Daily/Monthly)
+- Type of Campaign (Inbound / Outbound / Both)
 
 ## Go-Live Requirements
 
-- Expected go-live date : 
+- Expected go-live date 
 
 #### **Compliance & Consent**
 
-- Confirmation that all end-users have provided explicit opt-in consent (Yes/No):
-- Consent Collection Method (e.g., Web Form, CRM, offline forms ):
+- Confirmation that all end-users have provided explicit opt-in consent (Yes/No)
+- Consent Collection Method (e.g., Web Form, CRM, offline forms )
