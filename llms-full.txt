@@ -667,15 +667,6 @@ curl 'https://graph.facebook.com/v23.0/<Unique-ID-of-the-Registered-Number>/sett
   }
 }'
 ```
-
-### Reconfiguration
-
-To route incoming calls to a different Botstream/FreeSWITCH server:
-
-1. Update the `hostname`.
-2. Update the `port` if required.
-3. Re-run the API request.
-
 ---
 
 ## Business-Initiated Calls
