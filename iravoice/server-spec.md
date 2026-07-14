@@ -17,4 +17,3 @@ The monitoring dashboard includes:
 * **Bandwidth Usage** – Network traffic statistics, including inbound and outbound throughput.
 * **System Health Metrics** – Additional infrastructure metrics and alerts for proactive monitoring.
 
-This visibility helps teams identify resource bottlenecks, monitor infrastructure performance during peak traffic periods, and plan capacity requirements effectively.

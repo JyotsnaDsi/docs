@@ -248,6 +248,4 @@ This model ensures natural interruption-aware conversational behavior and preven
 * Use **BINARY frames** strictly for audio streaming.
 * Maintain strict adherence to PCM format and sampling rate.
 * Treat the WebSocket as a **bidirectional real-time audio + signaling channel**.
-
-This structure ensures predictable framing, low-latency streaming, and compatibility with IraVoice playback systems.
 :::

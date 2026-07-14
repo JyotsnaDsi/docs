@@ -94,12 +94,12 @@ In the event of a complaint, consent records may need to be shared with the SIP 
 When Epicode notifies you of a call audit, follow these steps:
 
 1. Verify the audit details: 
-   Epicode will provide:
-  - Your Epicode number (caller)
-  - Recipient’s phone number (callee)
-  - Call Date & Time
-  - Complaint Date & Time
-2. Collect consent evidence: Provide documentation showing the recipient explicitly agreed to receive calls from your organization.
+    Epicode will provide the details of numbers to which the complaints have been recieved
+      - Your Epicode number (caller)
+      - Recipient’s phone number (callee)
+      - Call Date & Time
+      - Complaint Date & Time
+2. Collect consent evidence: Provide documentation showing the recipient explicitly agreed to receive calls from your organization. The consent evidence must have been obtained within the **last six months**.
 3. Submit the proof within 2 working  days: Ensure all required information is included (see “Consent Evidence Requirements” below).
 4. Remove the recipient from your calling list: Prevent repeat complaints by ensuring the number is not called again.
 
@@ -160,6 +160,39 @@ Customers are strongly advised to ensure full adherence to all regulatory requir
 - Multiple complaints:
   - Repeated violations may result in blacklisting.
   - For resellers, incorrect compliance mapping may result in action on the entire account.
+
+---
+
+## Complaint Mechanism as per Regulation Amendment
+
+If it is found that the number of complaints against the Sender are from **five or more unique Recipients during the last ten days**, the following actions shall be taken:
+
+1. Suspend the outgoing services of all the telecom resources of the Sender that were utilized for sending Unsolicited Commercial Communications (UCC).
+2. Initiate an investigation by issuing a notice to the Sender under sub-regulation **5(d)(i)**, providing the Sender an opportunity to represent their case.
+3. Complete the investigation within **five business days** from the date of receipt of the Sender's representation.
+4. Record the reasons for the findings.
+
+If the investigation concludes that the Sender was engaged in sending Unsolicited Commercial Communications (UCC), the following actions shall be taken:
+
+### First Instance of Violation
+
+- Outgoing services of **all telecom resources** of the Sender, including **PRI/SIP trunks**, shall be barred by all Access Providers for a period of **15 days**, irrespective of whether resources other than the misused resource were used for sending UCC.
+
+### Second and Subsequent Instances of Violation
+
+- **Disconnection of Telecom Resources**
+  - All telecom resources of the Sender across all Access Providers, including **PRI/SIP trunks**, shall be disconnected for **one year**, irrespective of whether resources other than the misused resource were used for sending UCC.
+
+- **Blacklist**
+  - The Originating Access Provider (OAP) shall place the Sender under the **blacklist** category.
+  - No new telecom resources shall be provided by any Access Provider to the Sender during this period.
+
+- **Device Blocking**
+  - All devices used for making UCC shall be blocked across all Access Providers for a period of **one year**.
+
+> **Proviso:** One telephone number may be allowed to be retained by the Sender during this period.
+
+---
 
 :::info
 Note: Epicode reserves the right to block traffic, disable numbers, or suspend services in accordance with its Acceptable Use Policy.

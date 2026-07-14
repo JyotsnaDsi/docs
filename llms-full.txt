@@ -63,28 +63,34 @@ curl --location 'https://sandboxld.epicode.in/api/makecall' \
 }'
 ```
 - You can replace the  **websocket_host,** **websocket_port** and **websocket_app** values to match those of your voicebot and **to_number** to the number you are making an outbound call to. 
-- Please refer to the sample websocket code: [**websocket_script**](https://drive.google.com/file/d/1n_dXpTgm5BNImtT1gWIWic6H4eDzNHHv/view?usp=sharing)
-- For more details on **Make Call request parameters**: [Call Params](/api/makecall-make-outbound-call)
+- Refer to the [**Websocket Message Model**](/iravoice/websocket-message-model) for integrating your voicebot application with IraVoice.
+- More details on **Make Call request parameters**: [**Call Params**](/api/makecall-make-outbound-call)
 
-### Key configurations:
+:::tip
+Sample websocket code for payload structure: [**websocket_script**](https://drive.google.com/file/d/1n_dXpTgm5BNImtT1gWIWic6H4eDzNHHv/view?usp=sharing)
+:::
 
-**Media Stream Format:**  
-The voicebot application must stream audio to IraVoice over WebSocket in the following format:
+## Key configurations
 
-1. PCM (signed 16-bit)
-2. Sampling rate: 8 kHz or 16 kHz  
+### Media Stream Format
+The voicebot application must stream audio to IraVoice over WebSocket in PCM (signed 16-bit) format
+
   
+---
 
-**Streaming Modes:**
+### Streaming Modes
 
-- **VAD Mode** ("streaming_useraudio": false)
-- Audio is delivered as complete utterances
-- Triggered when the user finishes speaking
--  **Non-VAD Mode** ("streaming_useraudio": true)
-- Audio is streamed continuously in chunks
-- Default chunk size: 3200 bytes (~200 ms of audio)
+**VAD Mode** ("streaming_useraudio": false):
+    - Audio is delivered as complete utterances
+    - Triggered when the user finishes speaking
 
-**Supported Codecs by IraVoice:**
+**Non-VAD Mode** ("streaming_useraudio": true):
+    - Audio is streamed continuously in chunks
+    - Default chunk size: 3200 bytes (~200 ms of audio)
+
+---
+
+### Codecs Supported by IraVoice in the Sandbox
 
 - PCMU (8kHz)
 - PCMA (8kHz)
@@ -92,12 +98,14 @@ The voicebot application must stream audio to IraVoice over WebSocket in the fol
 - G722 (16khz)
 - G722.2 / AMR-WB (16kHz)
 
+---
+
 ## Making an inbound call in Iravoice
 
 To configure inbound calling for a particular number you can reach out to Epicode support team and share the call params you want us to set for the inbound calls.
 
 :::tip
-### Frequently Asked questions
+## Frequently Asked questions
 
 For common doubts and queries with IraVoice please refer  to [IraVoice FAQ's](https://epicode.in/iravoice#FAQs)
 :::
@@ -380,12 +388,12 @@ In the event of a complaint, consent records may need to be shared with the SIP 
 When Epicode notifies you of a call audit, follow these steps:
 
 1. Verify the audit details: 
-   Epicode will provide:
-  - Your Epicode number (caller)
-  - Recipient’s phone number (callee)
-  - Call Date & Time
-  - Complaint Date & Time
-2. Collect consent evidence: Provide documentation showing the recipient explicitly agreed to receive calls from your organization.
+    Epicode will provide the details of numbers to which the complaints have been recieved
+      - Your Epicode number (caller)
+      - Recipient’s phone number (callee)
+      - Call Date & Time
+      - Complaint Date & Time
+2. Collect consent evidence: Provide documentation showing the recipient explicitly agreed to receive calls from your organization. The consent evidence must have been obtained within the **last six months**.
 3. Submit the proof within 2 working  days: Ensure all required information is included (see “Consent Evidence Requirements” below).
 4. Remove the recipient from your calling list: Prevent repeat complaints by ensuring the number is not called again.
 
@@ -446,6 +454,39 @@ Customers are strongly advised to ensure full adherence to all regulatory requir
 - Multiple complaints:
   - Repeated violations may result in blacklisting.
   - For resellers, incorrect compliance mapping may result in action on the entire account.
+
+---
+
+## Complaint Mechanism as per Regulation Amendment
+
+If it is found that the number of complaints against the Sender are from **five or more unique Recipients during the last ten days**, the following actions shall be taken:
+
+1. Suspend the outgoing services of all the telecom resources of the Sender that were utilized for sending Unsolicited Commercial Communications (UCC).
+2. Initiate an investigation by issuing a notice to the Sender under sub-regulation **5(d)(i)**, providing the Sender an opportunity to represent their case.
+3. Complete the investigation within **five business days** from the date of receipt of the Sender's representation.
+4. Record the reasons for the findings.
+
+If the investigation concludes that the Sender was engaged in sending Unsolicited Commercial Communications (UCC), the following actions shall be taken:
+
+### First Instance of Violation
+
+- Outgoing services of **all telecom resources** of the Sender, including **PRI/SIP trunks**, shall be barred by all Access Providers for a period of **15 days**, irrespective of whether resources other than the misused resource were used for sending UCC.
+
+### Second and Subsequent Instances of Violation
+
+- **Disconnection of Telecom Resources**
+  - All telecom resources of the Sender across all Access Providers, including **PRI/SIP trunks**, shall be disconnected for **one year**, irrespective of whether resources other than the misused resource were used for sending UCC.
+
+- **Blacklist**
+  - The Originating Access Provider (OAP) shall place the Sender under the **blacklist** category.
+  - No new telecom resources shall be provided by any Access Provider to the Sender during this period.
+
+- **Device Blocking**
+  - All devices used for making UCC shall be blocked across all Access Providers for a period of **one year**.
+
+> **Proviso:** One telephone number may be allowed to be retained by the Sender during this period.
+
+---
 
 :::info
 Note: Epicode reserves the right to block traffic, disable numbers, or suspend services in accordance with its Acceptable Use Policy.
@@ -957,8 +998,6 @@ This model ensures natural interruption-aware conversational behavior and preven
 * Use **BINARY frames** strictly for audio streaming.
 * Maintain strict adherence to PCM format and sampling rate.
 * Treat the WebSocket as a **bidirectional real-time audio + signaling channel**.
-
-This structure ensures predictable framing, low-latency streaming, and compatibility with IraVoice playback systems.
 :::
 
 
@@ -1492,7 +1531,6 @@ The monitoring dashboard includes:
 * **Bandwidth Usage** – Network traffic statistics, including inbound and outbound throughput.
 * **System Health Metrics** – Additional infrastructure metrics and alerts for proactive monitoring.
 
-This visibility helps teams identify resource bottlenecks, monitor infrastructure performance during peak traffic periods, and plan capacity requirements effectively.
 
 
 
@@ -2453,6 +2491,219 @@ This configuration is designated as the strategic standard for the following rea
 - **Operational Standardisation:** Utilising this hardware specification across the environment simplifies procurement, streamlines maintenance, and provides a versatile foundation that can be reassigned between volume-focused and intelligence-focused tasks as business needs evolve.
 
 
+
+
+---
+
+## Document: /iracpa/set-cpa-params
+
+URL: /docs/iracpa/set-cpa-params
+
+
+# API Interface
+
+The API interface is over a websocket connection. The API caller just needs to know the IP address and the port number to connect to the iraCPA service. The url would be:
+
+```text
+wss://IP_ADDRESS:PORT
+```
+
+The deployment can contain multiple server instances or multiple pods on Kubernetes, using the IraCluster HA framework from Epicode.
+
+## Set CPA Parameters
+
+This API allows configuration of the various parameters which controls the behavior of the call progress analysis engine. Some prominent configurations that can be set are:
+
+- Time limit for first detection, that LV or AM.
+- The specific frequencies to detect other than identifying humans and answering machines.
+- The detection event on which the CPA engine can stop the analysis.
+- Total analysis time limit.
+
+### Request Body (json)
+
+Use text mode in the websocket to send this json request. Keep listening to any replies asynchronously. The json schema is as follows:
+
+```json
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"properties": {
+  	"request_name": {"type": "string" },
+  	"tenant_id": {"type": "string" },
+  	"config_name": {"type": "string" },
+  	"analysis": {"type": "string", "enum":["amd"]},
+  	"min_ambient_energy": {"type": "integer", "minimum": 100},
+  	"initial_silence_ignore": {"type": "integer", "minimum": 0, "maximum": 5000},
+  	"log_rtp_history": {"type": "boolean", "enum" : [true,false] },
+  	"tones": {"type": "object"},
+  	"log_voice": {"type": "boolean", "enum" : [true,false] },
+  	"break_events": {"type": "string"},
+    "amd_time_limit": {"type": "integer", "minimum": 1000, "maximum": 3000},
+  	"total_timeout": {"type": "integer", "minimum": 10000},
+  	"silence_detect_limit": {"type": "integer", "minimum": 1000, "maximum": 10000},
+  	"beep_to_silence_gap": {"type": "integer", "minimum": 0, "maximum": 10000},
+  	"beep_is_am": {"type": "boolean", "enum" : [true,false] },
+  	"detect_dtmf": {"type": "boolean", "enum" : [true,false] }
+	},
+	"required": [ "request_name", "config_name", "tenant_id", "analysis"]
+}
+```
+
+
+
+| Key | Type | Description | Example | Default |
+|------|------|-------------|---------|---------|
+| **request_name** | string **(Required)** | Specify the request name | `set_cpa_params` | None |
+| **tenant_id** | string **(Required)** | Name of the licensee | `acme` | None |
+| **config_name** | string **(Required)** | Unique name for the configuration | `"my_setup"` | None |
+| **analysis** | string **(Required)** | Name of the call progress analysis | `amd` | None |
+| **min_ambient_energy** | integer | Threshold that separates perfect initial silence and ambient silence | `200` | `200` |
+| **initial_silence_ignore** | integer | If the energy level is lower than minimum ambient energy, ignore the RTP packets for a duration (in milliseconds). | `5000` | `750` |
+| **log_rtp_history** | bool | Log the history of RTP packets sent. Must be one of `true`, `false`. | `true` | `false` |
+| **tones** | object (key, value pairs) | This is optional. Any beeps will emit `BP` by default. Tones are specified as frequency and tolerance. | `{"FX":"2100\|5","MD":"1662\|5"}` | `{}` |
+| **log_voice** | bool | Tells the system whether or not to record and store the analysis stream. Must be one of `true`, `false`. | `true` | `false` |
+| **break_events** | string | Comma-separated list of frequencies or events on which the CPA analysis can stop. | `"LV,FX,AM"` | None |
+| **amd_time_limit** | integer | The time limit for determining the voice to be AM or LV. | `2000` | `1750` |
+| **total_timeout** | integer | The time in milliseconds at which the analysis will stop. | `20000` | `15000` |
+| **silence_detect_limit** | integer | Detect silence after initial AM/LV detection. Sends `SL` after the detect limit. Set `0` for no detection. Minimum value `1000` and maximum value `10000`, in milliseconds. | `3000` | `2000` |
+| **beep_to_silence_gap** | integer | Detect if silence follows a beep after a certain gap, specified in milliseconds. This emits `BPSL` event upon detection. Default is `0`, then it won’t detect. | `1500` | `0` |
+| **beep_is_am** | bool | Consider any beep before the AM/LV event as AM. | `false` | `true` |
+| **detect_dtmf** | integer | Detect DTMF. | `true` | `false` |
+| **suppress_spikes** | bool | Suppress sharp noises. | `false` | `true` |
+| **minimum_frequency** | integer | Lowest frequency to be detected. | `400` | `250` |
+
+---
+### Sample Request (json)
+
+```json
+{
+  "request_name": "set_cpa_params",
+  "tenant_id": "acme",
+  "analysis": "amd",
+  "config_name": "my_setup",
+  "time_limit": 1750,
+  "log_voice": true,
+  "tones": {
+    "FX": "2100|5",
+    "MD": "1662|5"
+  },
+  "break_events": "FX,MD,BP",
+  "total_timeout": "20000"
+}
+```
+
+### Response Body (json)
+
+| Field | Description |
+|-------|-------------|
+| **result**<br/>`string` | `OK` - No error<br/><br/>`01` - Mandatory fields are not specified<br/>`02` - Could not save the CPA configuration |
+| **reason**<br/>`string` | Will provide the descriptive message about the result. |
+
+:::tip
+If the cpa parameter is set in one instance, it will take effect in every instance in the iraCluster. You can set the cpa_parameter using one instance, and use `config_name` on the other instances.
+:::
+
+
+---
+
+## Document: /iracpa/make-cpa-request
+
+URL: /docs/iracpa/make-cpa-request
+
+
+# Make CPA Request
+
+This API sends the CPA request, followed by the RTP data.
+
+## Request Body (json)
+
+Use text mode in the websocket to send this json request. Keep listening to any replies asynchronously.
+
+| Key | Description | Example | Default |
+|------|-------------|---------|---------|
+| **tenant_id**<br/>**required** \| `string` | Name of the licensee | `acme` | None |
+| **config_name**<br/>**required** \| `string` | Unique name for the configuration | `"my_setup"` | None |
+| **sampling_rate**<br/>**optional** \| `integer` | Sampling rate of the audio | `16000` | `8000` |
+| **call_uuid**<br/>**optional** \| `string` | Call_uuid to be associated with the transaction | Generated | None |
+| **pod_id**<br/>**optional** \| `string` | Calling application instance | None | None |
+
+## Sample Request (json)
+
+```json
+{
+  "tenant_id": "acme",
+  "config_name": "my_setup"
+}
+```
+
+This API request will initialize the CPA analyser. After the request is sent, the websocket mode should be changed to binary, and RTP data should be sent in **16 bit PCM** format. Preferably send **4000 bytes every 250 milliseconds**. The results will be coming back whenever the CPA analyser makes a detection.
+
+## Response Body (json)
+
+| Field | Description |
+|-------|-------------|
+| **result**<br/>`string` | `LV` - Live voice found<br/><br/>`AM` - Answering Machine found<br/><br/>`TO` - Time out, total time exceeded<br/><br/>The result could also be a custom tone specified under **tones**.<br/><br/>`01` - Mandatory fields are not specified<br/>`03` - Specified CPA configuration not found<br/>`04` - No license available for the tenant<br/>`05` - Specified CPA analyzer not found<br/>`06` - RTP data was sent without initializing the analyser |
+| **reason**<br/>`string` | Will provide the descriptive message about the result. |
+| **break**<br/>`bool` | `true` / `false` - Tells the caller to stop sending RTP and disconnect the session. |
+| **max_energy**<br/>`Integer` | The maximum energy found in the voice data. |
+| **pattern**<br/>`string` | Energy pattern seen in the voice data. |
+| **duration**<br/>`Integer` | Duration of the data analyzed. |
+| **request_count**<br/>`Integer` | Count of the requests handled so far. |
+| **real_time**<br/>`Integer` | It is the time taken to send the audio to IraCpa for Analysis. |
+
+
+---
+
+## Document: /iracpa/intro
+
+URL: /docs/iracpa/intro
+
+
+# Introduction - Call Progress Analysis
+
+The Epicode IraCPA allows users to do call progress analysis for their dialer applications. With these API one can:
+
+- Determine if a call is answered by an answering machine, live voice or fax machine.
+- Listen to specific frequency tones like beeps from an answering machine.
+- Stop the analysis upon receiving one of these events.
+
+Each API is a json body request over a websocket connection. The following sections describe the json request and response, and how to send the RTP data.
+
+:::note
+IraCPA supports both standalone and load-distributed deployments. It can be deployed as a Kubernetes workload or as a native Linux service, with compatibility across most popular Linux distributions.
+:::
+
+## Detection Mechanism
+
+![](/docs/iracpa.png)
+
+Epicode **IraCPA** uses advanced speech pattern analysis to distinguish between a live human voice, an answering machine, fax, or other non-human sources. Since there is no definitive method to differentiate a live greeting from a recorded greeting based solely on speech, IraCPA combines multiple detection techniques. Each technique contributes to the overall decision, and the first conclusive result within the analysis window determines the final classification.
+
+### <span style={{"color":"#b85cfa"}}> 1. Fast Call Progress Analysis </span>
+
+IraCPA delivers an Answering Machine Detection (AMD) result within **1,750 milliseconds**, enabling applications to meet stringent compliance requirements such as TCPA and PECR. Unlike conventional AMD solutions that require customers to manually tune detection timeouts and sensitivity parameters, IraCPA is pre-optimized to provide the best possible detection accuracy within the fixed **1.75-second** analysis window.
+
+### <span style={{"color":"#b85cfa"}}> 2. Speech Pattern Analysis </span>
+
+IraCPA is **language agnostic** and does not rely on spoken words or phrases such as "Hello." Instead, it analyzes speech characteristics, including speech cadence, energy distribution, and timing patterns, to determine whether the audio resembles a live speaker or a prerecorded greeting.
+
+The detection engine uses proprietary stochastic pattern recognition algorithms rather than deterministic rules, allowing it to perform consistently across different languages, accents, and speaking styles. Typical detection accuracy exceeds **80%**, with many deployments reporting accuracy levels above **95%** under production conditions.
+
+### <span style={{"color":"#b85cfa"}}> 3. Pure Tone Detection </span>
+
+In addition to speech analysis, IraCPA detects **pure frequency tones**, which are commonly generated by voicemail systems, fax machines, and other automated devices.
+
+Human speech consists of multiple harmonic frequencies with relatively distributed energy, whereas pure tones exhibit concentrated energy at a single frequency. When such a tone is detected, IraCPA can confidently rule out a live human voice.
+
+The engine can be configured to recognize known voicemail and fax tone frequencies. Tone detection is effective when the tone occurs within the initial **1,750-millisecond** analysis period.
+
+### <span style={{"color":"#b85cfa"}}> 4. Silence Detection </span>
+
+IraCPA continuously monitors silence as part of the detection process.
+
+- Configurable parameters allow the engine to ignore expected silence immediately after call connection.
+- Ambient silence occurring after the initial analysis period can be reported through dedicated silence detection events.
+- If the called party remains silent throughout the entire **1,750-millisecond** detection window, IraCPA classifies the call as **Live Voice**, since answering machines typically begin playing their greeting within this period.
 
 
 ---
