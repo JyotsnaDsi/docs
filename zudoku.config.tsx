@@ -300,7 +300,7 @@ Sales
         },
         {
           type: "category",
-          label: "IraCPA - Answering Machine Detection",
+          label: "IraCPA - AMD",
           icon: "voicemail",
           collapsible: false,
           items: [
@@ -312,21 +312,21 @@ Sales
             },
             {
               type: "category",
-              label: "API Reference",
-              icon: "layout-grid",
+              label: "IraCPA API",
+              icon: "cog",
               collapsible: true,
               items: [
                 {
                   "type": "doc",
                   "label": "Set CPA Params",
                   "file": "/iracpa/set-cpa-params",
-                  "icon": "circle-play",
+                  "icon": "sliders-vertical",
                 },
                 {
                   "type": "doc",
-                  "label": "Make CPA Requests",
+                  "label": "Make CPA Request",
                   "file": "/iracpa/make-cpa-request",
-                  "icon": "circle-play",
+                  "icon": "audio-lines",
                 },
               ],
             },
