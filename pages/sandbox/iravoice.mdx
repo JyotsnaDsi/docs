@@ -55,7 +55,7 @@ curl --location 'https://sandboxld.epicode.in/api/makecall' \
 - More details on **Make Call request parameters**: [**Call Params**](/api/makecall-make-outbound-call)
 
 :::tip
-Sample websocket code for payload structure: [**websocket_script**](https://drive.google.com/file/d/1n_dXpTgm5BNImtT1gWIWic6H4eDzNHHv/view?usp=sharing)
+Sample websocket script: [**websocket_script**](https://drive.google.com/file/d/1n_dXpTgm5BNImtT1gWIWic6H4eDzNHHv/view?usp=sharing)
 :::
 
 ## Key configurations

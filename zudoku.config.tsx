@@ -300,7 +300,7 @@ Sales
         },
         {
           type: "category",
-          label: "IraCPA - AMD",
+          label: "IraCPA - Voicemail Detection",
           icon: "voicemail",
           collapsible: false,
           items: [
@@ -329,6 +329,12 @@ Sales
                   "icon": "audio-lines",
                 },
               ],
+            },
+            {
+              "type": "doc",
+              "label": "Detection Edge Cases",
+              "file": "/iracpa/detection-edge-cases",
+              "icon": "search-alert",
             },
           ],
         },
