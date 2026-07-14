@@ -1,0 +1,245 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "IraCPA WebSocket API",
+    "version": "1.0.0",
+    "description": "API documentation for the IraCPA Call Progress Analysis Engine. Communication occurs over WebSocket (wss://{host}:{port})."
+  },
+  "servers": [
+    {
+      "url": "wss://{host}:{port}",
+      "description": "IraCPA WebSocket Endpoint",
+      "variables": {
+        "host": {
+          "default": "localhost"
+        },
+        "port": {
+          "default": "8443"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "summary": "WebSocket Message",
+        "description": "Establish a WebSocket connection and send JSON messages. After a Make CPA Request, switch to binary mode and stream 16-bit PCM RTP audio.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SetCPAParametersRequest"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MakeCPARequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "WebSocket response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/SetCPAParametersResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/CPAAnalysisResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SetCPAParametersRequest": {
+        "type": "object",
+        "required": [
+          "request_name",
+          "tenant_id",
+          "config_name",
+          "analysis"
+        ],
+        "properties": {
+          "request_name": {
+            "type": "string",
+            "example": "set_cpa_params"
+          },
+          "tenant_id": {
+            "type": "string",
+            "example": "acme"
+          },
+          "config_name": {
+            "type": "string",
+            "example": "my_setup"
+          },
+          "analysis": {
+            "type": "string",
+            "enum": [
+              "amd"
+            ]
+          },
+          "min_ambient_energy": {
+            "type": "integer",
+            "minimum": 100,
+            "default": 200
+          },
+          "initial_silence_ignore": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5000,
+            "default": 750
+          },
+          "log_rtp_history": {
+            "type": "boolean",
+            "default": false
+          },
+          "tones": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "FX": "2100|5",
+              "MD": "1662|5"
+            }
+          },
+          "log_voice": {
+            "type": "boolean",
+            "default": false
+          },
+          "break_events": {
+            "type": "string",
+            "example": "LV,FX,AM"
+          },
+          "amd_time_limit": {
+            "type": "integer",
+            "minimum": 1000,
+            "maximum": 3000,
+            "default": 1750
+          },
+          "total_timeout": {
+            "type": "integer",
+            "minimum": 10000,
+            "default": 15000
+          },
+          "silence_detect_limit": {
+            "type": "integer",
+            "minimum": 1000,
+            "maximum": 10000,
+            "default": 2000
+          },
+          "beep_to_silence_gap": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000,
+            "default": 0
+          },
+          "beep_is_am": {
+            "type": "boolean",
+            "default": true
+          },
+          "detect_dtmf": {
+            "type": "boolean",
+            "default": false
+          },
+          "suppress_spikes": {
+            "type": "boolean",
+            "default": true
+          },
+          "minimum_frequency": {
+            "type": "integer",
+            "default": 250
+          }
+        }
+      },
+      "SetCPAParametersResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "string",
+            "enum": [
+              "OK",
+              "01",
+              "02"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      },
+      "MakeCPARequest": {
+        "type": "object",
+        "required": [
+          "tenant_id",
+          "config_name"
+        ],
+        "properties": {
+          "tenant_id": {
+            "type": "string",
+            "example": "acme"
+          },
+          "config_name": {
+            "type": "string",
+            "example": "my_setup"
+          },
+          "sampling_rate": {
+            "type": "integer",
+            "default": 8000,
+            "example": 16000
+          },
+          "call_uuid": {
+            "type": "string"
+          },
+          "pod_id": {
+            "type": "string"
+          }
+        }
+      },
+      "CPAAnalysisResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "string",
+            "description": "LV, AM, TO, custom tone, or error code."
+          },
+          "reason": {
+            "type": "string"
+          },
+          "break": {
+            "type": "boolean"
+          },
+          "max_energy": {
+            "type": "integer"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "integer"
+          },
+          "request_count": {
+            "type": "integer"
+          },
+          "real_time": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

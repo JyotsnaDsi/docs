@@ -1,4 +1,12 @@
 import type { ZudokuConfig } from "zudoku";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "zudoku/ui/Card";
 
 const config: ZudokuConfig = {
   basePath: "/docs",
@@ -285,6 +293,40 @@ Sales
                   "label": "WhatsApp Calling",
                   "file":  "/iravoice/whatsapp-calling",
                   "icon": "message-circle-dashed",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "IraCPA - Answering Machine Detection",
+          icon: "voicemail",
+          collapsible: false,
+          items: [
+            {
+              "type": "doc",
+              "label": "Introduction",
+              "file": "/iracpa/intro",
+              "icon": "circle-play",
+            },
+            {
+              type: "category",
+              label: "API Reference",
+              icon: "layout-grid",
+              collapsible: true,
+              items: [
+                {
+                  "type": "doc",
+                  "label": "Set CPA Params",
+                  "file": "/iracpa/set-cpa-params",
+                  "icon": "circle-play",
+                },
+                {
+                  "type": "doc",
+                  "label": "Make CPA Requests",
+                  "file": "/iracpa/make-cpa-request",
+                  "icon": "circle-play",
                 },
               ],
             },
