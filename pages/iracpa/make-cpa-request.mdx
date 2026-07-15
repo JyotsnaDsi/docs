@@ -11,7 +11,7 @@ Use text mode in the websocket to send this json request. Keep listening to any 
 | **tenant_id**<br/>**required** \| `string` | Name of the licensee | `acme` | None |
 | **config_name**<br/>**required** \| `string` | Unique name for the configuration | `"my_setup"` | None |
 | **sampling_rate**<br/>**optional** \| `integer` | Sampling rate of the audio | `16000` | `8000` |
-| **call_uuid**<br/>**optional** \| `string` | Call_uuid to be associated with the transaction | Generated | None |
+| **call_uuid**<br/>**optional** \| `string` | Call_uuid to be associated with the transaction(If used with IraVoice) | Generated | None |
 | **pod_id**<br/>**optional** \| `string` | Calling application instance | None | None |
 
 ## Sample Request (json)
@@ -42,7 +42,7 @@ This API request will initialize the CPA analyser. After the request is sent, th
 | **freq_found**<br/>`Integer` | Detected frequency of the audio |
 | **initial_silence_found**<br/>`Integer` | Duration of the silence found in ms |
 | **initial_silence_ignored**<br/>`Integer` | Duration of the silence ignored in ms |
-| **call_uuid**<br/>`Integer` | uuid of the call(When CPA is used alongside IraVoice) |
+| **call_uuid**<br/>`Integer` | UUID of the call(When CPA is used alongside IraVoice) |
 
 ## Sample response
 

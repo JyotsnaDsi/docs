@@ -336,6 +336,12 @@ Sales
               "file": "/iracpa/detection-edge-cases",
               "icon": "search-alert",
             },
+            {
+              "type": "doc",
+              "label": "Accuracy & Performance",
+              "file": "/iracpa/benchmarks",
+              "icon": "gauge",
+            },
           ],
         },
         
