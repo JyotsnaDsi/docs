@@ -29,7 +29,7 @@ This API request will initialize the CPA analyser. After the request is sent, th
 
 | Field | Description |
 |-------|-------------|
-| **result**<br/>`string` | `LV` - Live voice found<br/><br/>`AM` - Answering Machine found<br/><br/>`TO` - Time out, total time exceeded<br/><br/>The result could also be a custom tone specified under **tones**.<br/><br/>`01` - Mandatory fields are not specified<br/>`03` - Specified CPA configuration not found<br/>`04` - No license available for the tenant<br/>`05` - Specified CPA analyzer not found<br/>`06` - RTP data was sent without initializing the analyser |
+| **result**<br/>`string` | **Results for EAMD analysis**<br/><br/>`LV` - Live Voice<br/>`AM` - Answering Machine<br/>`TO` - Time out, total time exceeded<br/>`FX` - Fax<br/>`BP` - Beep<br/>`SL` - Silence<br/>`RT` - RingTone<br/>`SIT` - Special information tones<br/>`EAM` - Extended Answering Machine (Triggered when an answering machine is detected after a ringtone.)<br/>`IBP` - Immediate Beep (Triggered when a beep is detected within the first 1.75 seconds.)<br/><br/>**Results for AMD analysis**<br/><br/>`LV` - Live Voice<br/>`AM` - Answering Machine<br/>`TO` - Time out, total time exceeded<br/>`FX` - Fax<br/>`BP` - Beep<br/>`SL` - Silence<br/>`SIT` - Special information tones<br/><br/>The result could also be a custom tone specified under **tones**.<br/><br/>`01` - Mandatory fields are not specified<br/>`03` - Specified CPA configuration not found<br/>`04` - No license available for the tenant<br/>`05` - Specified CPA analyzer not found<br/>`06` - RTP data was sent without initializing the analyser |
 | **reason**<br/>`string` | Will provide the descriptive message about the result. |
 | **break**<br/>`bool` | `true` / `false` - Tells the caller to stop sending RTP and disconnect the session. |
 | **max_energy**<br/>`Integer` | The maximum energy found in the voice data. |
@@ -37,3 +37,32 @@ This API request will initialize the CPA analyser. After the request is sent, th
 | **duration**<br/>`Integer` | Duration of the data analyzed. |
 | **request_count**<br/>`Integer` | Count of the requests handled so far. |
 | **real_time**<br/>`Integer` | It is the time taken to send the audio to IraCpa for Analysis. |
+| **sampling_rate**<br/>`Integer` | Specified sampling rate of the analysed audio file. |
+| **voice_filename**<br/>`Integer` | Path to the raw file created |
+| **freq_found**<br/>`Integer` | Detected frequency of the audio |
+| **initial_silence_found**<br/>`Integer` | Duration of the silence found in ms |
+| **initial_silence_ignored**<br/>`Integer` | Duration of the silence ignored in ms |
+| **call_uuid**<br/>`Integer` | uuid of the call(When CPA is used alongside IraVoice) |
+
+## Sample response
+
+```json
+***************{
+
+   "avg_energy": 2990,
+   "break": true,
+   "call_uuid": "4463116f-e604-4099-9695-4b9af06cf7bd",
+   "duration": "2.88",
+   "freq_found": 0,
+   "initial_silence_found": 1125,
+   "initial_silence_ignored": 1125,
+   "max_energy": 10087,
+   "pattern": "11111110000000",
+   "real_time": 2989,
+   "request_count": 140,
+   "result": "LV",
+   "sampling_rate": 8000,
+   "voice_filename": ""
+}
+```
+
