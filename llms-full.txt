@@ -2624,7 +2624,7 @@ Use text mode in the websocket to send this json request. Keep listening to any 
 | **tenant_id**<br/>**required** \| `string` | Name of the licensee | `acme` | None |
 | **config_name**<br/>**required** \| `string` | Unique name for the configuration | `"my_setup"` | None |
 | **sampling_rate**<br/>**optional** \| `integer` | Sampling rate of the audio | `16000` | `8000` |
-| **call_uuid**<br/>**optional** \| `string` | Call_uuid to be associated with the transaction | Generated | None |
+| **call_uuid**<br/>**optional** \| `string` | Call_uuid to be associated with the transaction(If used with IraVoice) | Generated | None |
 | **pod_id**<br/>**optional** \| `string` | Calling application instance | None | None |
 
 ## Sample Request (json)
@@ -2655,7 +2655,7 @@ This API request will initialize the CPA analyser. After the request is sent, th
 | **freq_found**<br/>`Integer` | Detected frequency of the audio |
 | **initial_silence_found**<br/>`Integer` | Duration of the silence found in ms |
 | **initial_silence_ignored**<br/>`Integer` | Duration of the silence ignored in ms |
-| **call_uuid**<br/>`Integer` | uuid of the call(When CPA is used alongside IraVoice) |
+| **call_uuid**<br/>`Integer` | UUID of the call(When CPA is used alongside IraVoice) |
 
 ## Sample response
 
@@ -2794,6 +2794,81 @@ In case of False Positive, the call may be bridged to a human agent or a voice b
 IraCPA allows developers to control when CPA analysis should stop by configuring the `break_events` parameter. Instead of stopping analysis immediately upon the first Human (LV) or Answering Machine (AM) event, we recommend allowing the analysis to continue.
 
 If a Silence (SL) event is triggered shortly after an Answering Machine (AM) event, typically within **three to four seconds**, it often indicates that the initial AM classification was incorrect. Answering machine greetings are generally much longer and rarely pause so quickly. Therefore, an early silence is usually a live person waiting for a response after their greeting. In such scenarios, the application can safely bridge the call to a human agent or a voice bot, thereby recovering many false-negative detections and improving overall accuracy.
+
+
+---
+
+## Document: /iracpa/benchmarks
+
+URL: /docs/iracpa/benchmarks
+
+
+# IraCPA Machine Detection and Accuracy
+
+## Answering Machine Detection (AMD)
+
+Answering Machine Detection (AMD) is a technology used with dialers to identify calls answered by voicemail systems instead of a live person. The objective is to quickly determine whether the call has been answered by:
+
+- Live Human
+- Answering Machine
+- Voicemail
+- Fax
+- Modem
+- IVR
+
+This decision must typically be made within **2 seconds** to comply with **TCPA regulations** in the United States. TCPA requires the call to be transferred to a live agent within **2 seconds** after the called party completes their greeting.
+
+
+## IraCPA Module
+
+Epicode's **Call Progress Analysis (IraCPA)** module uses advanced voice analysis algorithms that evaluate:
+
+- Speech patterns
+- Tone of voice
+- Speaking speed
+- Post-greeting silence
+- Audio characteristics
+
+These techniques enable **industry-leading detection accuracy** with an analysis time of only **1.75 seconds**, leaving approximately **0.25 seconds** for applications to transfer or bridge the call to an agent while remaining fully TCPA compliant.
+
+
+
+## Voicemail Beep Detection
+
+IraCPA also supports voicemail drop workflows.
+
+After detecting that the call has been answered by an answering machine:
+
+1. IraCPA immediately notifies the application.
+2. Audio analysis continues while listening for the voicemail beep.
+3. Once the beep is detected, another notification is sent.
+4. The application can then automatically play a prerecorded voicemail message.
+
+
+## Handling Early Answer Events
+
+During large-scale deployments, some telecom carriers generate the **call answered** event before the audio path is fully established. This can result in the first few seconds of the call containing complete silence.
+
+To improve detection accuracy, IraCPA can:
+
+- Distinguish between **absolute silence** and **ambient background noise**
+- Ignore initial silence for a configurable duration (up to **5 seconds**)
+- Begin analysis only after meaningful audio is detected
+
+This significantly improves the accuracy of distinguishing between live humans and answering machines.
+
+
+
+## Benchmarks
+
+The following benchmarks are based on extensive internal testing along with production deployments across the **United States** and **Europe**.
+
+| Time Since First Utterance | Sample Size | Human Accuracy | Machine Accuracy | Fax Accuracy | Overall Accuracy |
+|----------------------------|------------:|---------------:|-----------------:|-------------:|-----------------:|
+| 1.50 seconds | 10,000 | 86% | 90% | 100% | 86.8% |
+| 1.75 seconds | 10,000 | 92% | 95% | 100% | **93.2%** |
+
+
 
 
 ---

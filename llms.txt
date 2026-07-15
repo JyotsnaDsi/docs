@@ -26,6 +26,7 @@
 - [/iracpa/make-cpa-request](/docs/iracpa/make-cpa-request.md)
 - [/iracpa/intro](/docs/iracpa/intro.md)
 - [/iracpa/detection-edge-cases](/docs/iracpa/detection-edge-cases.md)
+- [/iracpa/benchmarks](/docs/iracpa/benchmarks.md)
 - [/botcompose/create-voicebot](/docs/botcompose/create-voicebot.md)
 - [/botcompose/botlatency](/docs/botcompose/botlatency.md)
 - [/botcompose/botcomposescript](/docs/botcompose/botcomposescript.md)
