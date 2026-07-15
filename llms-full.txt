@@ -2819,7 +2819,7 @@ Answering Machine Detection (AMD) is a technology used with dialers to identify 
 This decision must typically be made within **2 seconds** to comply with **TCPA regulations** in the United States. TCPA requires the call to be transferred to a live agent within **2 seconds** after the called party completes their greeting.
 
 
-## IraCPA Module
+## Evaluation Techniques
 
 Epicode's **Call Progress Analysis (IraCPA)** module uses advanced voice analysis algorithms that evaluate:
 
