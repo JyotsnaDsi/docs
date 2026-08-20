@@ -283,7 +283,7 @@ Response Content Type: text/plain
 - Confirmation that all end-users have provided explicit opt-in consent (Yes/No)
 - Consent Collection Method (e.g., Web Form, CRM, offline forms )
 
-:::note
+:::info
 Epicode does not retain call recordings on its servers. Recordings are generated on the IraVoice node only for the duration of the call, streamed/uploaded to the client's designated remote storage over HTTPS, and deleted from the IraVoice server once the upload is confirmed successful. This is by design IraVoice is a stateless media processing layer, not a storage system.
 :::
 
